@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DonatUz - Ijodkorlarni qo'llab-quvvatlash platformasi</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            surface: { DEFAULT: '#0b1326', dim: '#070d1c', container: '#131b2e' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { 
+      background-color: #070d1c; 
+      color: #f1f5f9; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      -webkit-tap-highlight-color: transparent; 
+      margin: 0;
+      padding: 0;
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .glass-card { 
+      background: rgba(19, 27, 46, 0.85); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255, 255, 255, 0.08); 
+    }
+    .page-section { 
+      display: none; 
+      min-height: calc(100vh - 135px); 
+      padding-bottom: 95px; 
+    }
+    .page-section.active { 
+      display: block; 
+      animation: fadeIn 0.22s ease-out; 
+    }
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(5px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+  </style>
+</head>
+<body class="bg-[#070d1c] min-h-screen text-slate-100 flex justify-center selection:bg-indigo-500 selection:text-white">
+
+  <!-- Mobile Wrapper Container -->
+  <div class="w-full max-w-[440px] min-h-screen bg-[#0b1326] relative shadow-2xl flex flex-col border-x border-slate-800/60">
+
+    <!-- GLOBAL HEADER -->
+    <header class="sticky top-0 z-40 bg-[#0b1326]/95 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="navigateTo('home')">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30 text-lg">D</div>
+        <div>
+          <span class="font-extrabold text-base tracking-tight text-white flex items-center gap-1">Donat<span class="text-indigo-400">Uz</span></span>
+          <span class="text-[10px] font-semibold tracking-wider text-indigo-400 block -mt-1 uppercase">Platform</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="showToast('Yangi bildirishnomalar mavjud emas')" class="relative p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500"></span>
+        </button>
+        <button onclick="navigateTo('dashboard')" class="p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300">
+          <i data-lucide="user" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- 1. BOSH SAHIFA (EXPLORE & FEED) -->
+    <main id="view-home" class="page-section active px-4 pt-3">
+      <div class="relative mb-3.5">
+        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="text" placeholder="Ijodkor yoki strimerni qidirish..." class="w-full bg-[#131b2e] border border-slate-700/60 rounded-xl pl-10 pr-10 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500">
+        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"><i data-lucide="sliders-horizontal" class="w-4 h-4"></i></button>
+      </div>
+
+      <div class="flex gap-2 overflow-x-auto hide-scrollbar mb-4 pb-1">
+        <button class="px-3.5 py-1.5 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center gap-1.5 shrink-0"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Barchasi</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-[#162038] border border-slate-700/60 text-slate-300 font-semibold text-xs flex items-center gap-1.5 shrink-0"><i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i> Gaming</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-[#162038] border border-slate-700/60 text-slate-300 font-semibold text-xs flex items-center gap-1.5 shrink-0"><i data-lucide="mic" class="w-3.5 h-3.5"></i> Podcast</button>
+        <button class="px-3.5 py-1.5 rounded-full bg-[#162038] border border-slate-700/60 text-slate-300 font-semibold text-xs flex items-center gap-1.5 shrink-0"><i data-lucide="headphones" class="w-3.5 h-3.5"></i> Musiqa</button>
+      </div>
+
+      <div class="mb-5">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Hozir jonli efirda</span>
+          </div>
+          <span class="text-[11px] font-semibold text-slate-400">14 efir</span>
+        </div>
+        <div class="flex gap-3.5 overflow-x-auto hide-scrollbar pb-1">
+          <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer" onclick="openCreatorTip('Jasur Gaming', 'CS2 & PUBG strimer', '3,750,000 UZS / 5,000,000 UZS')">
+            <div class="relative p-0.5 rounded-full bg-gradient-to-tr from-rose-500 via-indigo-500 to-amber-500">
+              <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center font-bold text-indigo-400 text-lg border-2 border-[#0b1326]">JG</div>
+              <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-rose-600 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full text-white shadow">LIVE</span>
+            </div>
+            <span class="text-[11px] font-semibold text-slate-200 mt-1 max-w-[68px] truncate">Jasur Play</span>
+            <span class="text-[9px] text-slate-400">CS2 Prime</span>
+          </div>
+
+          <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer" onclick="openCreatorTip('Madina FM', 'Podkast & Suhbat', '4,200,000 UZS / 10,000,000 UZS')">
+            <div class="relative p-0.5 rounded-full bg-gradient-to-tr from-rose-500 via-indigo-500 to-amber-500">
+              <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center font-bold text-amber-400 text-lg border-2 border-[#0b1326]">MF</div>
+              <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-rose-600 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full text-white shadow">LIVE</span>
+            </div>
+            <span class="text-[11px] font-semibold text-slate-200 mt-1 max-w-[68px] truncate">Madina.fm</span>
+            <span class="text-[9px] text-slate-400">Podkast #42</span>
+          </div>
+
+          <div class="flex flex-col items-center gap-1 shrink-0 cursor-pointer" onclick="openCreatorTip('Timur Tech', 'Dasturlash va IT', '3,900,000 UZS / 5,000,000 UZS')">
+            <div class="relative p-0.5 rounded-full bg-gradient-to-tr from-rose-500 via-indigo-500 to-amber-500">
+              <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center font-bold text-cyan-400 text-lg border-2 border-[#0b1326]">TT</div>
+              <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-rose-600 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full text-white shadow">LIVE</span>
+            </div>
+            <span class="text-[11px] font-semibold text-slate-200 mt-1 max-w-[68px] truncate">Timur Tech</span>
+            <span class="text-[9px] text-slate-400">Dev Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h2 class="text-sm font-bold text-white mb-3 tracking-wide">Trenddagi ijodkorlar</h2>
+
+        <div class="glass-card rounded-2xl p-4 mb-3 border border-slate-700/60 shadow-lg">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center font-black text-indigo-400 text-lg">JG</div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h3 class="font-bold text-white text-sm">Jasur Gaming</h3>
+                  <span class="bg-indigo-500/20 text-indigo-300 text-[10px] font-bold px-1.5 py-0.5 rounded">TOP 1</span>
+                </div>
+                <p class="text-xs text-slate-400">142.8K obunachi</p>
+              </div>
+            </div>
+            <button class="p-2 rounded-xl text-slate-400 bg-slate-800/40 hover:text-white"><i data-lucide="bookmark" class="w-4 h-4"></i></button>
+          </div>
+
+          <div class="bg-slate-900/60 rounded-xl p-2.5 mb-3 border border-slate-800">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="text-slate-300 font-medium">Yangi strim mikrofoni</span>
+              <span class="text-amber-400 font-bold">75%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-indigo-500 to-amber-400 rounded-full" style="width: 75%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-medium">
+              <span>Yig'ildi: 3,750,000 UZS</span>
+              <span>Maqsad: 5,000,000 UZS</span>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="openCreatorTip('Jasur Gaming', 'PUBG & CS2 • Har kunlik qiziqarli janglar', '3,750,000 UZS / 5,000,000 UZS')" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/30">
+              <i data-lucide="heart" class="w-3.5 h-3.5"></i> Donat yuborish
+            </button>
+            <button onclick="quickDonate('Jasur Gaming', 10000)" class="py-2.5 px-3 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 font-semibold text-xs border border-slate-700/80">
+              +10,000 UZS
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 mb-3 border border-slate-700/60 shadow-lg">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center font-black text-amber-400 text-lg">MF</div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h3 class="font-bold text-white text-sm">Madina FM</h3>
+                  <span class="bg-indigo-500/20 text-indigo-300 text-[10px] font-bold px-1.5 py-0.5 rounded">PODCAST</span>
+                </div>
+                <p class="text-xs text-slate-400">89.4K obunachi</p>
+              </div>
+            </div>
+            <button class="p-2 rounded-xl text-slate-400 bg-slate-800/40 hover:text-white"><i data-lucide="bookmark" class="w-4 h-4"></i></button>
+          </div>
+
+          <div class="bg-slate-900/60 rounded-xl p-2.5 mb-3 border border-slate-800">
+            <div class="flex items-center justify-between text-xs mb-1.5">
+              <span class="text-slate-300 font-medium">4K Podkast kamerasi</span>
+              <span class="text-amber-400 font-bold">42%</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-indigo-500 to-amber-400 rounded-full" style="width: 42%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-medium">
+              <span>Yig'ildi: 4,200,000 UZS</span>
+              <span>Maqsad: 10,000,000 UZS</span>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="openCreatorTip('Madina FM', 'Podkast & Madaniy suhbatlar', '4,200,000 UZS / 10,000,000 UZS')" class="flex-1 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-indigo-600/30">
+              <i data-lucide="heart" class="w-3.5 h-3.5"></i> Donat yuborish
+            </button>
+            <button onclick="quickDonate('Madina FM', 25000)" class="py-2.5 px-3 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 font-semibold text-xs border border-slate-700/80">
+              +25,000 UZS
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-[#131b2e] border border-slate-700/60 rounded-2xl p-3.5 mb-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> Xavfsiz milliy to'lov tizimlari
+          </span>
+          <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">0% komissiya</span>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-2 text-center"><span class="text-xs font-bold text-cyan-400">&bull; CLICK</span></div>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-2 text-center"><span class="text-xs font-bold text-rose-400">&bull; Payme</span></div>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-2 text-center"><span class="text-xs font-bold text-amber-400">&bull; Uzum</span></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 2. IJODKOR DONAT FORMASI -->
+    <main id="view-donate" class="page-section px-4 pt-3">
+      <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+        <button onclick="navigateTo('home')" class="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Orqaga
+        </button>
+        <span class="text-xs font-bold text-slate-300">Donat yuborish</span>
+        <span class="w-4"></span>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden mb-4 border border-slate-700/60 bg-[#131b2e] p-4">
+        <div class="flex items-center gap-3">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-600/40 border border-indigo-400 flex items-center justify-center font-black text-indigo-300 text-xl">JG</div>
+          <div>
+            <h2 id="tip-creator-name" class="font-extrabold text-base text-white">Jasur Gaming</h2>
+            <p id="tip-creator-bio" class="text-xs text-slate-400">PUBG & CS2 &bull; Har kunlik janglar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-3.5">
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-semibold text-slate-300">Ismingiz yoki nikneym</label>
+            <label class="flex items-center gap-1.5 text-[11px] text-slate-400 cursor-pointer">
+              <input type="checkbox" id="anon-check" onchange="toggleAnon(this)" class="rounded bg-slate-800 border-slate-700 text-indigo-600"> Anonim
+            </label>
+          </div>
+          <input type="text" id="donor-name" value="Sardor_Pro" class="w-full bg-[#131b2e] border border-slate-700/70 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-300 block mb-1.5">Donat miqdori (UZS)</label>
+          <div class="grid grid-cols-4 gap-2 mb-2">
+            <button onclick="selectAmount(10000, this)" class="amount-btn py-2 rounded-xl bg-[#131b2e] border border-slate-700 text-slate-200 font-bold text-xs">10,000</button>
+            <button onclick="selectAmount(25000, this)" class="amount-btn py-2 rounded-xl bg-[#131b2e] border border-slate-700 text-slate-200 font-bold text-xs">25,000</button>
+            <button onclick="selectAmount(50000, this)" class="amount-btn py-2 rounded-xl bg-amber-500 text-slate-950 font-black text-xs">50,000</button>
+            <button onclick="selectAmount(100000, this)" class="amount-btn py-2 rounded-xl bg-[#131b2e] border border-slate-700 text-slate-200 font-bold text-xs">100,000</button>
+          </div>
+          <input type="number" id="custom-amount" value="50000" oninput="updateCustomAmount(this.value)" class="w-full bg-[#131b2e] border border-slate-700/70 rounded-xl px-3.5 py-2.5 text-sm font-bold text-amber-400 focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-300 block mb-1.5">Strimdagi xabaringiz</label>
+          <textarea id="fan-message" rows="2" class="w-full bg-[#131b2e] border border-slate-700/70 rounded-xl p-3 text-sm text-slate-200 focus:outline-none focus:border-indigo-500">Jasur aka, keyingi safar Pochinkiga tushing, omad!</textarea>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-300 block mb-1.5">To'lov tizimi</label>
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="selectPayment('Click', this)" class="pay-btn p-2 rounded-xl bg-slate-900 border-2 border-indigo-500 text-xs font-bold text-white">Click</button>
+            <button onclick="selectPayment('Payme', this)" class="pay-btn p-2 rounded-xl bg-[#131b2e] border border-slate-700 text-xs font-bold text-slate-300">Payme</button>
+            <button onclick="selectPayment('Uzum', this)" class="pay-btn p-2 rounded-xl bg-[#131b2e] border border-slate-700 text-xs font-bold text-slate-300">Uzum</button>
+            <button onclick="selectPayment('Karta', this)" class="pay-btn p-2 rounded-xl bg-[#131b2e] border border-slate-700 text-xs font-bold text-slate-300">Karta</button>
+          </div>
+        </div>
+
+        <button onclick="submitDonation()" id="submit-tip-btn" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-98 transition text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+          <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
+          <span id="submit-btn-text">Donat yuborish (50,000 UZS)</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- 3. MUVAFFAQIYATLI DONAT (KVITANSIYA) -->
+    <main id="view-success" class="page-section px-4 pt-4">
+      <div class="flex flex-col items-center text-center mt-2 mb-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/40 mb-3">
+          <i data-lucide="check" class="w-9 h-9 stroke-[3]"></i>
+        </div>
+        <span class="text-amber-400 text-[10px] font-extrabold uppercase tracking-widest">&bull; QABUL QILINDI &bull;</span>
+        <h1 class="text-xl font-extrabold text-white mt-0.5">Donatingiz yuborildi!</h1>
+        <p class="text-xs text-slate-400 mt-1">Strimda hoziroq jonli efirda namoyish etiladi!</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 border border-slate-700/60 mb-4 shadow-xl">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-400">Donat miqdori</span>
+            <span id="success-amount" class="text-xl font-black text-amber-400 block">50,000 UZS</span>
+          </div>
+          <i data-lucide="receipt" class="w-6 h-6 text-slate-400"></i>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 my-3 border border-slate-800">
+          <p id="success-message" class="text-xs text-slate-200 italic">"Jasur aka, omad!"</p>
+        </div>
+        <div class="space-y-2 text-xs">
+          <div class="flex justify-between"><span class="text-slate-400">Qabul qiluvchi:</span><span id="success-receiver" class="font-semibold text-white">Jasur Gaming</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">To'lovchi:</span><span id="success-sender" class="font-semibold text-white">Sardor_Pro</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">To'lov usuli:</span><span id="success-method" class="font-semibold text-indigo-400">Click</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Tranzaksiya ID:</span><span class="font-mono text-slate-300">#DUZ-849204</span></div>
+        </div>
+      </div>
+
+      <button onclick="navigateTo('home')" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30">
+        <i data-lucide="play" class="w-4 h-4"></i> Strimga qaytish
+      </button>
+    </main>
+
+    <!-- 4. DASHBOARD (IJODKOR PANELI) -->
+    <main id="view-dashboard" class="page-section px-4 pt-3">
+      <div class="bg-gradient-to-br from-indigo-950 via-[#131b2e] to-slate-900 rounded-2xl p-4 border border-indigo-500/30 shadow-xl mb-4">
+        <span class="text-xs text-slate-400">Yechib olish mumkin bo'lgan balans:</span>
+        <div class="text-2xl font-black text-white my-1">4,850,000 <span class="text-xs text-amber-400">UZS</span></div>
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+          <span>Uzcard / Humo (8842)</span>
+          <span class="text-emerald-400 font-bold">0% komissiya</span>
+        </div>
+        <button onclick="showToast('Pul yechib olish so\'rovi qabul qilindi!')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition">
+          Pulni yechib olish
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2.5 mb-4">
+        <div class="bg-[#131b2e] border border-slate-700/60 rounded-xl p-3">
+          <span class="text-[10px] text-slate-400 block">Jami donatlar</span>
+          <span class="text-lg font-black text-white">142 ta</span>
+          <span class="text-[10px] text-emerald-400 font-medium">+18 ta efir davomida</span>
+        </div>
+        <div class="bg-[#131b2e] border border-slate-700/60 rounded-xl p-3">
+          <span class="text-[10px] text-slate-400 block">O'rtacha donat</span>
+          <span class="text-lg font-black text-white">34,000 UZS</span>
+          <span class="text-[10px] text-amber-400 font-medium">Yuqori faollik</span>
+        </div>
+      </div>
+
+      <div class="bg-[#131b2e] border border-slate-700/60 rounded-2xl p-3.5 mb-4">
+        <h3 class="text-xs font-bold text-white mb-2.5 flex items-center justify-between">
+          <span>Strim boshqaruvi</span>
+          <span class="text-[10px] text-amber-400">OBS & Alert</span>
+        </h3>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="showToast('OBS efirida test signali yangradi!')" class="p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-semibold text-slate-200 flex items-center justify-center gap-1.5">
+            <i data-lucide="bell" class="w-3.5 h-3.5 text-amber-400"></i> Alert Test
+          </button>
+          <button onclick="showToast('Vidjet havolasi nusxalandi!')" class="p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs font-semibold text-slate-200 flex items-center justify-center gap-1.5">
+            <i data-lucide="link" class="w-3.5 h-3.5 text-indigo-400"></i> Vidjet Link
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- FIXED BOTTOM NAVIGATION BAR -->
+    <nav class="fixed bottom-0 w-full max-w-[440px] bg-[#0b1326]/95 backdrop-blur-md border-t border-slate-800/90 py-2 px-3 flex items-center justify-around z-40">
+      <button onclick="navigateTo('home')" id="tab-home" class="flex flex-col items-center gap-1 text-indigo-400">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Kashf</span>
+      </button>
+      <button onclick="openCreatorTip('Jasur Gaming', 'CS2 & PUBG strimer', '3.7M / 5M')" id="tab-donate" class="flex flex-col items-center -mt-5">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 transition text-white flex items-center justify-center shadow-lg shadow-indigo-600/40">
+          <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        </div>
+        <span class="text-[10px] font-bold text-indigo-400 mt-1">Donat</span>
+      </button>
+      <button onclick="navigateTo('dashboard')" id="tab-dashboard" class="flex flex-col items-center gap-1 text-slate-400">
+        <i data-lucide="pie-chart" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">Tushumlar</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-5 z-50 transition-all duration-300 transform -translate-y-20 opacity-0 bg-slate-900/95 backdrop-blur-md border border-indigo-500/50 text-white text-xs px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2">
+    <i data-lucide="info" class="w-4 h-4 text-indigo-400"></i>
+    <span id="toast-text">Xabar</span>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    lucide.createIcons();
+
+    let selectedAmount = 50000;
+    let selectedPayment = 'Click';
+    let currentCreator = 'Jasur Gaming';
+
+    function navigateTo(id) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('view-' + id);
+      if(target) target.classList.add('active');
+
+      const homeTab = document.getElementById('tab-home');
+      const dashTab = document.getElementById('tab-dashboard');
+      if (id === 'home') {
+        homeTab.className = 'flex flex-col items-center gap-1 text-indigo-400';
+        dashTab.className = 'flex flex-col items-center gap-1 text-slate-400';
+      } else if (id === 'dashboard') {
+        homeTab.className = 'flex flex-col items-center gap-1 text-slate-400';
+        dashTab.className = 'flex flex-col items-center gap-1 text-indigo-400';
+      } else {
+        homeTab.className = 'flex flex-col items-center gap-1 text-slate-400';
+        dashTab.className = 'flex flex-col items-center gap-1 text-slate-400';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function openCreatorTip(name, bio, goal) {
+      currentCreator = name;
+      document.getElementById('tip-creator-name').innerText = name;
+      document.getElementById('tip-creator-bio').innerText = bio || 'Strimer & Ijodkor';
+      navigateTo('donate');
+    }
+
+    function quickDonate(name, amt) {
+      selectAmount(amt);
+      openCreatorTip(name, '', '');
+    }
+
+    function selectAmount(amt, btn) {
+      selectedAmount = amt;
+      document.getElementById('custom-amount').value = amt;
+      document.getElementById('submit-btn-text').innerText = `Donat yuborish (${amt.toLocaleString()} UZS)`;
+
+      document.querySelectorAll('.amount-btn').forEach(b => {
+        b.className = 'amount-btn py-2 rounded-xl bg-[#131b2e] border border-slate-700 text-slate-200 font-bold text-xs';
+      });
+      if(btn) {
+        btn.className = 'amount-btn py-2 rounded-xl bg-amber-500 text-slate-950 font-black text-xs';
+      }
+    }
+
+    function updateCustomAmount(val) {
+      const amt = parseInt(val) || 0;
+      selectedAmount = amt;
+      document.getElementById('submit-btn-text').innerText = `Donat yuborish (${amt.toLocaleString()} UZS)`;
+    }
+
+    function selectPayment(name, btn) {
+      selectedPayment = name;
+      document.querySelectorAll('.pay-btn').forEach(b => {
+        b.className = 'pay-btn p-2 rounded-xl bg-[#131b2e] border border-slate-700 text-xs font-bold text-slate-300';
+      });
+      if(btn) {
+        btn.className = 'pay-btn p-2 rounded-xl bg-slate-900 border-2 border-indigo-500 text-xs font-bold text-white';
+      }
+      showToast(name + " to'lov tizimi tanlandi");
+    }
+
+    function toggleAnon(chk) {
+      const input = document.getElementById('donor-name');
+      input.value = chk.checked ? "Anonim Muxlis" : "Sardor_Pro";
+    }
+
+    function submitDonation() {
+      const name = document.getElementById('donor-name').value || "Anonim Muxlis";
+      const msg = document.getElementById('fan-message').value || "Omad strimda!";
+      document.getElementById('success-amount').innerText = selectedAmount.toLocaleString() + " UZS";
+      document.getElementById('success-message').innerText = '"' + msg + '"';
+      document.getElementById('success-receiver').innerText = currentCreator;
+      document.getElementById('success-sender').innerText = name;
+      document.getElementById('success-method').innerText = selectedPayment;
+      navigateTo('success');
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = text;
+      toast.classList.remove('-translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('-translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
