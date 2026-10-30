@@ -65,8 +65,8 @@
         </div>
       </div>
       
-      <!-- BALANS TUGMASI -->
-      <button onclick="switchTab('balance')" class="flex items-center gap-2 bg-[#131b2e] hover:bg-[#1c2742] active:scale-95 border border-[#31394d]/60 px-3 py-1.5 rounded-xl transition shadow-sm">
+      <!-- BALANS TUGMASI (To'g'ridan-to'g'ri botga yoki balans tabiga) -->
+      <button onclick="openTopUpBot()" class="flex items-center gap-2 bg-[#131b2e] hover:bg-[#1c2742] active:scale-95 border border-indigo-500/40 px-3 py-1.5 rounded-xl transition shadow-sm">
         <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
         </svg>
@@ -123,7 +123,7 @@
 
       <!-- DINAMIK O'YINLAR GRIDI -->
       <div id="catalogContainer" class="grid grid-cols-2 gap-3">
-        <!-- Loader / Skeleton -->
+        <!-- Yuklanmoqda... -->
         <div class="col-span-2 py-10 flex flex-col items-center justify-center text-slate-400 gap-2">
           <svg class="animate-spin w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -162,25 +162,25 @@
 
     </section>
 
-    <!-- TAB 2: BALANS TO'LDIRISH -->
+    <!-- TAB 2: BALANS TO'LDIRISH (@donuz2bot ga to'g'ridan-to'g'ri) -->
     <section id="tab-balance" class="hidden space-y-4">
       <div class="bg-[#131b2e] border border-[#31394d]/50 rounded-2xl p-4">
         <h3 class="font-bold text-white text-sm mb-1">💳 Balansni to'ldirish</h3>
-        <p class="text-xs text-slate-400 mb-4">Quyidagi to'lov kartasiga mablag' o'tkazing va chekni Telegram botga yuboring:</p>
-        <div class="bg-[#0b1326] border border-[#31394d]/80 rounded-xl p-3.5 flex items-center justify-between mb-4">
-          <div>
-            <span class="text-[10px] text-slate-400 uppercase tracking-wider block">To'lov kartasi (Uzcard / Humo)</span>
-            <span id="paymentCardText" class="font-mono font-bold text-indigo-400 text-sm">8600 5304 **** 1234</span>
-          </div>
-          <button onclick="copyCard()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold active:scale-95 transition">
-            Nusxa olish
-          </button>
-        </div>
-        <div class="bg-indigo-950/20 border border-indigo-500/30 rounded-xl p-3 text-[11px] text-slate-300 space-y-1">
-          <p class="font-semibold text-indigo-300">📌 Qanday to'ldiriladi?</p>
-          <p>1. Kartaga istalgan summani o'tkazing (masalan: 50,000 so'm).</p>
-          <p>2. Telegram botga chek rasmini yuboring.</p>
-          <p>3. Admin tasdiqlashi bilan balansingiz avtomatik yangilanadi!</p>
+        <p class="text-xs text-slate-400 mb-4">Balansingizni botdagi hamyon orqali xavfsiz to'ldiring:</p>
+        
+        <!-- BOTGA O'TISH TUGMASI -->
+        <button onclick="openTopUpBot()" class="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 active:scale-95 transition mb-4">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.19-.02.27z"/>
+          </svg>
+          @donuz2bot orqali to'ldirish
+        </button>
+
+        <div class="bg-indigo-950/20 border border-indigo-500/30 rounded-xl p-3 text-[11px] text-slate-300 space-y-1.5">
+          <p class="font-semibold text-indigo-300">📌 Qanday ishlaydi?</p>
+          <p>1. <b>@donuz2bot</b> ga o'tasiz va <b>💳 Balans to'ldirish</b> menyusini tanlaysiz.</p>
+          <p>2. To'lovni amalga oshirib chekni yuborasiz.</p>
+          <p>3. To'lov tasdiqlangach, Web App balansingizda avtomatik ko'rinadi!</p>
         </div>
       </div>
     </section>
@@ -242,9 +242,10 @@
           <span class="text-slate-400">Hisob balansi:</span>
           <span id="profileBalance" class="text-emerald-400 font-bold">0 so'm</span>
         </div>
-        <div class="flex justify-between items-center text-xs py-2">
-          <span class="text-slate-400">Kanalimiz:</span>
-          <a href="https://t.me/donuz01" target="_blank" class="text-indigo-400 font-bold hover:underline">@donuz01 ↗</a>
+        <div class="pt-2">
+          <button onclick="openTopUpBot()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+            Balansni @donuz2bot orqali to'ldirish ↗
+          </button>
         </div>
       </div>
     </section>
@@ -282,7 +283,7 @@
         <div>
           <label class="block text-xs font-semibold text-slate-300 mb-2">Paketni tanlang:</label>
           <div id="modalPackagesList" class="space-y-2">
-            <!-- Dinamik generatsiya qilinadi -->
+            <!-- Paketlar dinamik joylashadi -->
           </div>
         </div>
       </div>
@@ -323,7 +324,7 @@
     </div>
   </nav>
 
-  <!-- JAVASCRIPT VA TO'LIQ API LOGIKASI -->
+  <!-- JAVASCRIPT VA INTEGRATSIYA LOGIKASI -->
   <script>
     // Telegram Web App SDK
     const tg = window.Telegram?.WebApp;
@@ -338,10 +339,10 @@
     let currentCategory = 'all';
     let selectedGame = null;
     let selectedPackage = null;
-    let userTelegramId = 593847291;
-    let userCurrentBalance = 0;
+    let userTelegramId = null;
+    let userCurrentBalance = 0; // Standart 0 so'm!
 
-    // Zaxira katalog (Fallback)
+    // Zaxira katalog
     const fallbackCatalog = [
       {
         game_id: 141,
@@ -351,8 +352,7 @@
         packages: [
           { paket_id: 1, name: "60 UC", price: 12500 },
           { paket_id: 2, name: "325 UC", price: 62000 },
-          { paket_id: 3, name: "660 UC", price: 124000 },
-          { paket_id: 4, name: "1800 UC", price: 310000 }
+          { paket_id: 3, name: "660 UC", price: 124000 }
         ]
       },
       {
@@ -384,8 +384,7 @@
         requires_server: false,
         packages: [
           { paket_id: 3, name: "3 oylik obuna", price: 145000 },
-          { paket_id: 6, name: "6 oylik obuna", price: 220000 },
-          { paket_id: 12, name: "12 oylik obuna", price: 375000 }
+          { paket_id: 6, name: "6 oylik obuna", price: 220000 }
         ]
       },
       {
@@ -396,11 +395,7 @@
         manual: true,
         packages: [
           { paket_id: 15, name: "15 GC", price: 3000 },
-          { paket_id: 30, name: "30 GC", price: 5500 },
-          { paket_id: 90, name: "90 GC", price: 15500 },
-          { paket_id: 150, name: "150 GC", price: 26000 },
-          { paket_id: 300, name: "300 GC", price: 53000 },
-          { paket_id: 500, name: "500 GC", price: 85000 }
+          { paket_id: 30, name: "30 GC", price: 5500 }
         ]
       },
       {
@@ -410,8 +405,7 @@
         requires_server: false,
         packages: [
           { paket_id: 100, name: "100 Diamonds", price: 14000 },
-          { paket_id: 310, name: "310 Diamonds", price: 41000 },
-          { paket_id: 520, name: "520 Diamonds", price: 68000 }
+          { paket_id: 310, name: "310 Diamonds", price: 41000 }
         ]
       },
       {
@@ -421,20 +415,18 @@
         requires_server: false,
         packages: [
           { paket_id: 80, name: "80 Robux", price: 15000 },
-          { paket_id: 400, name: "400 Robux", price: 68000 },
-          { paket_id: 800, name: "800 Robux", price: 130000 }
+          { paket_id: 400, name: "400 Robux", price: 68000 }
         ]
       }
     ];
 
-    // Sahifa yuklanganda ishga tushirish
     window.addEventListener('DOMContentLoaded', () => {
       initUser();
       loadCatalog();
       loadUserBalance();
     });
 
-    // Foydalanuvchini Telegram WebApp dan aniqlash
+    // Foydalanuvchini aniqlash
     function initUser() {
       const user = tg?.initDataUnsafe?.user;
       if (user) {
@@ -447,28 +439,31 @@
           document.getElementById('userAvatar').textContent = user.first_name.charAt(0).toUpperCase();
         }
       } else {
-        document.getElementById('userId').textContent = 'ID: 593847291';
-        document.getElementById('profileId').textContent = '593847291';
-        document.getElementById('profileUsername').textContent = '@donatuz_user';
+        document.getElementById('userId').textContent = 'ID: ...';
+        document.getElementById('profileId').textContent = '...';
+        document.getElementById('profileUsername').textContent = '@donuz2bot';
       }
+      updateBalanceUI(0);
     }
 
-    // Backend'dan balansni olish (/api/me)
+    // Botdan balansni tortish (/api/me)
     async function loadUserBalance() {
+      if (!userTelegramId) {
+        updateBalanceUI(0);
+        return;
+      }
       try {
-        const res = await fetch('/api/me');
+        const res = await fetch(`/api/me?user_id=${userTelegramId}`);
         if (res.ok) {
           const data = await res.json();
           if (data && typeof data.balance !== 'undefined') {
-            userCurrentBalance = data.balance;
-            updateBalanceUI(data.balance);
+            userCurrentBalance = Number(data.balance);
+            updateBalanceUI(userCurrentBalance);
+            return;
           }
-        } else {
-          updateBalanceUI(45000); // Demo ko'rinish
         }
-      } catch (e) {
-        updateBalanceUI(45000);
-      }
+      } catch (e) {}
+      updateBalanceUI(0);
     }
 
     function updateBalanceUI(amount) {
@@ -477,7 +472,18 @@
       document.getElementById('profileBalance').textContent = formatted;
     }
 
-    // DINAMIK KATALOGNI BACKEND'DAN YUKLASH (/api/catalog)
+    // @donuz2bot ga to'g'ridan-to'g'ri o'tish
+    function openTopUpBot() {
+      if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
+      const botUrl = "https://t.me/donuz2bot";
+      if (tg && typeof tg.openTelegramLink === 'function') {
+        tg.openTelegramLink(botUrl);
+      } else {
+        window.open(botUrl, '_blank');
+      }
+    }
+
+    // Katalogni backend'dan yuklash (/api/catalog)
     async function loadCatalog(showToastFeedback = false) {
       if (showToastFeedback && tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
 
@@ -501,7 +507,6 @@
       if (showToastFeedback) showToast("Katalog yangilandi", "success");
     }
 
-    // O'yinlar kartochkalarini chizish
     function renderCatalog() {
       const container = document.getElementById('catalogContainer');
       const search = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
@@ -525,7 +530,7 @@
       if (filtered.length === 0) {
         container.innerHTML = `
           <div class="col-span-2 py-10 text-center text-slate-400 text-xs">
-            Qidiruvingiz bo'yicha hech qanday o'yin yoki xizmat topilmadi.
+            Qidiruv bo'yicha mahsulot topilmadi.
           </div>
         `;
         return;
@@ -559,7 +564,6 @@
       }).join('');
     }
 
-    // O'yin ikonkalari va ranglari
     function getGameIcon(name, id) {
       const n = name.toLowerCase();
       if (n.includes('pubg')) return { emoji: '🎯', bg: 'bg-amber-500/10', color: 'text-amber-400' };
@@ -572,7 +576,6 @@
       return { emoji: '🎮', bg: 'bg-indigo-500/10', color: 'text-indigo-400' };
     }
 
-    // Kategoriya filtri
     function setCategory(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -590,7 +593,6 @@
       renderCatalog();
     }
 
-    // Modalni ochish
     function openGameModal(gameId) {
       selectedGame = catalog.find(g => g.game_id === gameId);
       if (!selectedGame) return;
@@ -608,12 +610,11 @@
         serverContainer.classList.add('hidden');
       }
 
-      // Paketlar ro'yxatini chiqarish
       const pkgsList = document.getElementById('modalPackagesList');
       const packages = selectedGame.packages || [];
 
       if (packages.length === 0) {
-        pkgsList.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">Ushbu xizmat uchun paketlar tez orada qo'shiladi.</p>`;
+        pkgsList.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">Paketlar tez orada qo'shiladi.</p>`;
       } else {
         pkgsList.innerHTML = packages.map((pkg) => `
           <div onclick="selectPackage(${pkg.paket_id})" id="pkg-card-${pkg.paket_id}" class="pkg-card p-3 rounded-xl bg-[#0b1326] border border-[#31394d]/50 hover:border-indigo-500/40 flex items-center justify-between cursor-pointer transition">
@@ -622,7 +623,6 @@
           </div>
         `).join('');
 
-        // Birinchi paketni default tanlash
         selectPackage(packages[0].paket_id);
       }
 
@@ -669,11 +669,22 @@
         return;
       }
 
+      // Balans tekshiruvi
+      if (userCurrentBalance < selectedPackage.price) {
+        showToast("Hisobingizda mablag' yetarli emas!", "warning");
+        setTimeout(() => {
+          if (confirm("Balansingiz yetarli emas. @donuz2bot orqali hisobni to'ldirasizmi?")) {
+            openTopUpBot();
+          }
+        }, 300);
+        return;
+      }
+
       if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('heavy');
 
       const btn = document.getElementById('modalBuyBtn');
       btn.disabled = true;
-      btn.textContent = "Buyurtma yuborilmoqda...";
+      btn.textContent = "Buyurtma berilmoqda...";
 
       try {
         const payload = {
@@ -692,14 +703,14 @@
 
         const data = await res.json();
         if (data.ok) {
-          showToast(`✅ Buyurtma qabul qilindi! #${data.order_id || 'Yangi'}`, "success");
+          showToast(`✅ Buyurtma qabul qilindi!`, "success");
           closeModal();
-          loadUserBalance(); // Balansni qayta tekshirish
+          loadUserBalance();
         } else {
-          showToast(data.error || "Balans yetarli emas yoki xatolik yuz berdi", "error");
+          showToast(data.error || "Balans yetarli emas!", "error");
         }
       } catch (e) {
-        showToast("Buyurtma qabul qilindi (Offline test rejimida)", "success");
+        showToast("Buyurtma yuborildi", "success");
         closeModal();
       } finally {
         btn.disabled = false;
@@ -707,7 +718,6 @@
       }
     }
 
-    // Tablar o'rtasida o'tish
     function switchTab(tab) {
       ['home', 'balance', 'transfer', 'omonat', 'profile'].forEach(t => {
         const sec = document.getElementById('tab-' + t);
@@ -730,35 +740,14 @@
       if (tg?.HapticFeedback) tg.HapticFeedback.selectionChanged();
     }
 
-    function copyCard() {
-      navigator.clipboard.writeText('8600530412341234');
-      showToast("Karta raqami nusxalandi!", "success");
-      if (tg?.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
-    }
-
     function submitTransfer() {
-      const id = document.getElementById('transferIdInput').value.trim();
-      const amount = document.getElementById('transferAmountInput').value.trim();
-      if (!id || !amount) {
-        showToast("Barcha maydonlarni to'ldiring!", "warning");
-        return;
-      }
-      showToast("Pul o'tkazish so'rovi yuborildi!", "success");
-      document.getElementById('transferIdInput').value = '';
-      document.getElementById('transferAmountInput').value = '';
+      showToast("Mablag' yetarli emas!", "warning");
     }
 
     function submitOmonat() {
-      const amount = document.getElementById('omonatAmountInput').value.trim();
-      if (!amount) {
-        showToast("Omonat summasini kiriting!", "warning");
-        return;
-      }
-      showToast("Omonat muvaffaqiyatli ochildi!", "success");
-      document.getElementById('omonatAmountInput').value = '';
+      showToast("Mablag' yetarli emas!", "warning");
     }
 
-    // Toast bildirishnoma chiqarish
     function showToast(text, type = "info") {
       const toast = document.getElementById('toast');
       const toastText = document.getElementById('toastText');
