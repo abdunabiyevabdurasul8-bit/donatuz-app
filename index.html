@@ -1,769 +1,244 @@
 <!DOCTYPE html>
-<html lang="uz" class="dark">
+<html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>DonatUz - Telegram Web App</title>
-  <!-- Telegram WebApp SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-          colors: {
-            brand: { 50: '#eef2ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #0b1326;
-      color: #f1f5f9;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
-    .custom-scrollbar::-webkit-scrollbar { display: none; }
-    .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>GAME DONAT — O‘yinlar do‘koni</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#18263a;--line:#263750;--text:#f3f7ff;--muted:#9aabc2;--accent:#6d8cff;--accent2:#8b5cf6;--good:#32c98a;--bad:#ff6b78}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 15% 0%,#1a2b4b 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;min-height:100vh}
+header{border-bottom:1px solid var(--line);background:#0b1220dd;backdrop-filter:blur(12px);position:sticky;top:0;z-index:5}
+.nav{max-width:1120px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.4px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:22px}
+.navright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{border:1px solid var(--line);background:var(--panel);padding:9px 13px;border-radius:12px;color:var(--muted);font-size:13px}
+button{border:0;cursor:pointer;font:inherit}
+.btn{padding:11px 16px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-weight:750}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.secondary{background:var(--panel2);border:1px solid var(--line)}
+main{max-width:1120px;margin:32px auto;padding:0 20px 60px}
+.hero{padding:32px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(120deg,#172b49,#171d37 70%);margin-bottom:22px}
+.eyebrow{color:#aabaff;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-size:clamp(28px,5vw,43px);margin:10px 0}
+.hero p{color:var(--muted);max-width:650px;line-height:1.6;margin:0}
+.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:18px}
+h2{font-size:19px;margin:0 0 16px}
+label{display:block;color:var(--muted);font-size:13px;margin:13px 0 7px}
+input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:#0d1727;color:var(--text);outline:none;font:inherit}
+input:focus,select:focus{border-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.notice{font-size:13px;color:var(--muted);line-height:1.5;margin-top:12px}
+.status{padding:12px 14px;border-radius:12px;margin-top:13px;font-size:13px;display:none;line-height:1.5}
+.status.show{display:block}.status.ok{background:#12372f;color:#9cf0ce}.status.err{background:#3a2029;color:#ffc0c7}.status.info{background:#1c2d49;color:#c5d8ff}
+.balance{font-size:28px;font-weight:900;margin:7px 0}
+.small{font-size:12px;color:var(--muted)}
+.userline{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game{border:1px solid var(--line);border-radius:14px;padding:14px;background:#101a2a}
+.game strong{display:block;margin-bottom:5px}.game span{font-size:12px;color:var(--muted)}
+.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;grid-column:1/-1}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px}
+.hidden{display:none!important}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding:24px}.catalog{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){main{padding:0 13px 40px}.nav{padding:12px 13px}.grid2{grid-template-columns:1fr}.catalog{grid-template-columns:1fr}.panel{padding:17px}}
+</style>
 </head>
-<body class="min-h-screen flex flex-col font-sans pb-24 selection:bg-indigo-500 selection:text-white">
-
-  <!-- TOAST XABARLAR -->
-  <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform -translate-y-20 opacity-0 pointer-events-none">
-    <div id="toastContent" class="px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border bg-[#131b2e] border-indigo-500/50 text-white">
-      <span id="toastIcon">ℹ️</span>
-      <span id="toastText">Xabar matni</span>
-    </div>
+<body>
+<header><div class="nav">
+  <div class="brand"><div class="logo">🎮</div><span>GAME DONAT</span></div>
+  <div class="navright"><div class="pill" id="topBalance">Balans: —</div><button class="btn secondary" id="loginNav">Kirish</button></div>
+</div></header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">Tezkor va qulay donat</div>
+    <h1>O‘yiningiz uchun donat</h1>
+    <p>Kerakli o‘yinni tanlang, ID ma’lumotlarini kiriting va buyurtmangizni yuboring. Xarid qilish uchun Telegram orqali hisobingizga kiring.</p>
+  </section>
+  <div class="layout">
+    <section>
+      <div class="panel">
+        <h2>🎮 O‘yin va paket tanlash</h2>
+        <label for="game">O‘yin</label><select id="game"><option value="">Katalog yuklanmoqda...</option></select>
+        <div id="packageWrap" class="hidden">
+          <label for="package">Paket</label><select id="package"></select>
+        </div>
+        <div class="grid2">
+          <div><label id="playerLabel" for="playerId">Player ID</label><input id="playerId" placeholder="O‘yinchi ID sini kiriting" autocomplete="off"></div>
+          <div id="serverWrap" class="hidden"><label for="serverId">Server ID</label><input id="serverId" placeholder="Server ID" autocomplete="off"></div>
+        </div>
+        <div id="charWrap" class="hidden"><label for="charName">O‘yinchi nomi (ixtiyoriy)</label><input id="charName" placeholder="Nickname"></div>
+        <div class="actions">
+          <button class="btn secondary" id="checkBtn">ID tekshirish</button>
+          <button class="btn" id="orderBtn" disabled>Buyurtma berish</button>
+        </div>
+        <div id="orderStatus" class="status"></div>
+        <div class="notice">Eslatma: Grand Mobile buyurtmalari manual tekshiruv orqali bajariladi. Boshqa o‘yinlarda ID tekshiruvi backend imkoniyatiga bog‘liq.</div>
+      </div>
+      <div class="panel">
+        <div class="userline"><h2>🕹️ Katalog</h2><button class="btn secondary" id="refreshBtn">Yangilash</button></div>
+        <div class="catalog" id="catalog"><div class="empty">Katalog yuklanmoqda...</div></div>
+      </div>
+    </section>
+    <aside>
+      <div class="panel" id="authPanel">
+        <h2>🔐 Telegram orqali kirish</h2>
+        <label for="telegramId">Telegram ID</label><input id="telegramId" inputmode="numeric" placeholder="Masalan: 123456789">
+        <button class="btn" id="requestCode" style="width:100%;margin-top:13px">Tasdiqlash kodi yuborish</button>
+        <div id="codeArea" class="hidden">
+          <label for="authCode">Telegram botdan kelgan kod</label><input id="authCode" inputmode="numeric" maxlength="6" placeholder="6 xonali kod">
+          <button class="btn" id="verifyCode" style="width:100%;margin-top:12px">Kodni tasdiqlash</button>
+        </div>
+        <div id="authStatus" class="status"></div>
+        <p class="notice">Avval Telegram botingizda /start buyrug‘ini bosing. Kirish kodi bot orqali yuboriladi va 10 daqiqa amal qiladi.</p>
+      </div>
+      <div class="panel">
+        <h2>👤 Hisobingiz</h2>
+        <div class="small">Telegram ID</div><div id="accountId" style="font-weight:800;margin:5px 0 13px">Kirilmagan</div>
+        <div class="small">Mavjud balans</div><div class="balance" id="balance">— so‘m</div>
+        <button class="btn secondary" id="refreshBalance" style="width:100%">Balansni yangilash</button>
+        <button class="btn secondary hidden" id="logoutBtn" style="width:100%;margin-top:9px">Chiqish</button>
+        <div class="notice">Balansni to‘ldirish Telegram botdagi to‘lov bo‘limi orqali amalga oshiriladi.</div>
+      </div>
+    </aside>
   </div>
-
-  <!-- TOP HEADER -->
-  <header class="sticky top-0 z-30 bg-[#0b1326]/90 backdrop-blur-md border-b border-[#31394d]/30 px-4 py-3">
-    <div class="max-w-md mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="relative">
-          <div id="userAvatar" class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 text-base">
-            U
-          </div>
-          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-[#0b1326] rounded-full"></span>
-        </div>
-        <div>
-          <div class="flex items-center gap-1.5">
-            <h1 id="userName" class="font-bold text-sm text-white leading-tight">Foydalanuvchi</h1>
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-          </div>
-          <p id="userId" class="text-[11px] text-slate-400 font-mono">ID: ...</p>
-        </div>
-      </div>
-      
-      <!-- BALANS TUGMASI (To'g'ridan-to'g'ri botga yoki balans tabiga) -->
-      <button onclick="openTopUpBot()" class="flex items-center gap-2 bg-[#131b2e] hover:bg-[#1c2742] active:scale-95 border border-indigo-500/40 px-3 py-1.5 rounded-xl transition shadow-sm">
-        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-        </svg>
-        <span id="userBalance" class="text-xs font-bold text-slate-200">0 so'm</span>
-        <span class="w-4 h-4 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-[10px] font-bold">+</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ASOSIY MAYDON -->
-  <main class="flex-1 max-w-md mx-auto w-full px-4 pt-4">
-
-    <!-- TAB 1: ASOSIY DO'KON (O'YINLAR VA XIZMATLAR) -->
-    <section id="tab-home" class="space-y-4">
-      
-      <!-- BANNER -->
-      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-900/60 via-purple-900/40 to-slate-900/80 border border-indigo-500/30 p-4 shadow-xl shadow-indigo-950/40">
-        <div class="relative z-10">
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 text-[10px] font-bold border border-indigo-500/30 mb-2">
-            ⚡ TEZKOR AVTOMATIK YETKAZISH
-          </span>
-          <h2 class="text-lg font-extrabold text-white leading-snug">DonatUz Gaming & Telegram</h2>
-          <p class="text-xs text-slate-300 mt-1">PUBG UC, MLBB, Free Fire, Stars & Premium 24/7 ishlaydi</p>
-        </div>
-        <div class="absolute -right-4 -bottom-6 opacity-15 pointer-events-none">
-          <svg class="w-32 h-32 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- QIDIRUV VA REFRESH -->
-      <div class="flex items-center gap-2">
-        <div class="relative flex-1">
-          <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-          <input id="searchInput" oninput="filterGames()" type="text" placeholder="O'yin yoki xizmat qidirish..." class="w-full bg-[#131b2e] border border-[#31394d]/50 rounded-xl pl-10 pr-3 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition">
-        </div>
-        <button onclick="loadCatalog(true)" title="Katalogni yangilash" class="p-2.5 bg-[#131b2e] hover:bg-[#1c2742] active:rotate-180 transition duration-300 border border-[#31394d]/50 rounded-xl text-slate-300">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- KATEGORIYALAR -->
-      <div class="flex gap-2 overflow-x-auto custom-scrollbar pb-1 text-xs font-semibold">
-        <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white whitespace-nowrap shadow-sm shadow-indigo-600/30">Barchasi</button>
-        <button onclick="setCategory('games')" id="cat-games" class="cat-btn px-3.5 py-1.5 rounded-xl bg-[#131b2e] text-slate-300 hover:text-white border border-[#31394d]/50 whitespace-nowrap">🎮 O'yinlar</button>
-        <button onclick="setCategory('telegram')" id="cat-telegram" class="cat-btn px-3.5 py-1.5 rounded-xl bg-[#131b2e] text-slate-300 hover:text-white border border-[#31394d]/50 whitespace-nowrap">⭐ Stars & Premium</button>
-        <button onclick="setCategory('grand')" id="cat-grand" class="cat-btn px-3.5 py-1.5 rounded-xl bg-[#131b2e] text-slate-300 hover:text-white border border-[#31394d]/50 whitespace-nowrap">🚗 Grand Mobile</button>
-      </div>
-
-      <!-- DINAMIK O'YINLAR GRIDI -->
-      <div id="catalogContainer" class="grid grid-cols-2 gap-3">
-        <!-- Yuklanmoqda... -->
-        <div class="col-span-2 py-10 flex flex-col items-center justify-center text-slate-400 gap-2">
-          <svg class="animate-spin w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          <span class="text-xs">Katalog yuklanmoqda...</span>
-        </div>
-      </div>
-
-      <!-- TEZKOR AMALLAR -->
-      <div class="grid grid-cols-2 gap-3 pt-2">
-        <button onclick="switchTab('transfer')" class="bg-[#131b2e] border border-[#31394d]/40 rounded-2xl p-3 flex items-center gap-3 text-left hover:border-indigo-500/40 active:scale-95 transition">
-          <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-xs font-bold text-white">Pul o'tkazish</div>
-            <div class="text-[10px] text-slate-400">ID bo'yicha</div>
-          </div>
-        </button>
-
-        <button onclick="switchTab('omonat')" class="bg-[#131b2e] border border-[#31394d]/40 rounded-2xl p-3 flex items-center gap-3 text-left hover:border-indigo-500/40 active:scale-95 transition">
-          <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="text-xs font-bold text-white">Omonat (1%)</div>
-            <div class="text-[10px] text-slate-400">Oylik daromad</div>
-          </div>
-        </button>
-      </div>
-
-    </section>
-
-    <!-- TAB 2: BALANS TO'LDIRISH (@donuz2bot ga to'g'ridan-to'g'ri) -->
-    <section id="tab-balance" class="hidden space-y-4">
-      <div class="bg-[#131b2e] border border-[#31394d]/50 rounded-2xl p-4">
-        <h3 class="font-bold text-white text-sm mb-1">💳 Balansni to'ldirish</h3>
-        <p class="text-xs text-slate-400 mb-4">Balansingizni botdagi hamyon orqali xavfsiz to'ldiring:</p>
-        
-        <!-- BOTGA O'TISH TUGMASI -->
-        <button onclick="openTopUpBot()" class="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 active:scale-95 transition mb-4">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.19-.02.27z"/>
-          </svg>
-          @donuz2bot orqali to'ldirish
-        </button>
-
-        <div class="bg-indigo-950/20 border border-indigo-500/30 rounded-xl p-3 text-[11px] text-slate-300 space-y-1.5">
-          <p class="font-semibold text-indigo-300">📌 Qanday ishlaydi?</p>
-          <p>1. <b>@donuz2bot</b> ga o'tasiz va <b>💳 Balans to'ldirish</b> menyusini tanlaysiz.</p>
-          <p>2. To'lovni amalga oshirib chekni yuborasiz.</p>
-          <p>3. To'lov tasdiqlangach, Web App balansingizda avtomatik ko'rinadi!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: O'TKAZMA -->
-    <section id="tab-transfer" class="hidden space-y-4">
-      <div class="bg-[#131b2e] border border-[#31394d]/50 rounded-2xl p-4">
-        <h3 class="font-bold text-white text-sm mb-1">💸 Foydalanuvchiga pul o'tkazish</h3>
-        <p class="text-xs text-slate-400 mb-4">Do'stingizning Telegram ID raqamini kiriting va bot balansingizdan pul yuboring:</p>
-        <div class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Qabul qiluvchi Telegram ID</label>
-            <input id="transferIdInput" type="number" placeholder="Masalan: 123456789" class="w-full bg-[#0b1326] border border-[#31394d]/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-300 mb-1">O'tkazma summasi (so'm)</label>
-            <input id="transferAmountInput" type="number" placeholder="Masalan: 20000" class="w-full bg-[#0b1326] border border-[#31394d]/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-          </div>
-          <button onclick="submitTransfer()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-lg shadow-indigo-600/30">
-            O'tkazishni tasdiqlash
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 4: OMONAT -->
-    <section id="tab-omonat" class="hidden space-y-4">
-      <div class="bg-[#131b2e] border border-[#31394d]/50 rounded-2xl p-4">
-        <div class="flex items-center gap-2 mb-1">
-          <h3 class="font-bold text-white text-sm">🏦 Omonat (Depozit)</h3>
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">1% oylik foyda</span>
-        </div>
-        <p class="text-xs text-slate-400 mb-4">Balansingizdagi mablag'ni 1 oyga saqlashga qo'ying va kafolatlangan 1% sof daromad oling.</p>
-        <div class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Omonat summasi (so'm)</label>
-            <input id="omonatAmountInput" type="number" placeholder="Masalan: 100000" class="w-full bg-[#0b1326] border border-[#31394d]/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-          </div>
-          <button onclick="submitOmonat()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition active:scale-95 shadow-lg shadow-emerald-600/30">
-            Omonat ochish
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 5: PROFIL -->
-    <section id="tab-profile" class="hidden space-y-4">
-      <div class="bg-[#131b2e] border border-[#31394d]/50 rounded-2xl p-4 space-y-3">
-        <h3 class="font-bold text-white text-sm">👤 Sizning profilingiz</h3>
-        <div class="flex justify-between items-center text-xs py-2 border-b border-[#31394d]/30">
-          <span class="text-slate-400">Telegram ID:</span>
-          <span id="profileId" class="font-mono font-bold text-white">...</span>
-        </div>
-        <div class="flex justify-between items-center text-xs py-2 border-b border-[#31394d]/30">
-          <span class="text-slate-400">Username:</span>
-          <span id="profileUsername" class="text-indigo-400 font-medium">@...</span>
-        </div>
-        <div class="flex justify-between items-center text-xs py-2 border-b border-[#31394d]/30">
-          <span class="text-slate-400">Hisob balansi:</span>
-          <span id="profileBalance" class="text-emerald-400 font-bold">0 so'm</span>
-        </div>
-        <div class="pt-2">
-          <button onclick="openTopUpBot()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition">
-            Balansni @donuz2bot orqali to'ldirish ↗
-          </button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MODAL: O'YIN PAKETLARINI TANLASH VA SOTIB OLISH -->
-  <div id="gameModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-[#131b2e] border border-[#31394d]/60 w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[85vh] flex flex-col overflow-hidden">
-      
-      <!-- MODAL HEADER -->
-      <div class="px-5 py-4 border-b border-[#31394d]/40 flex items-center justify-between">
-        <div>
-          <h3 id="modalGameTitle" class="font-bold text-base text-white">O'yin nomi</h3>
-          <p id="modalGameSubtitle" class="text-xs text-slate-400">Paketni tanlang va hisob ID kiriting</p>
-        </div>
-        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#0b1326] text-slate-400 flex items-center justify-center hover:text-white">✕</button>
-      </div>
-
-      <!-- MODAL BODY -->
-      <div class="p-5 overflow-y-auto space-y-4 custom-scrollbar">
-        <!-- INPUT FIELDS -->
-        <div class="space-y-3">
-          <div>
-            <label id="modalIdLabel" class="block text-xs font-semibold text-slate-300 mb-1">Player ID</label>
-            <input id="modalPlayerId" type="text" placeholder="Masalan: 512345678" class="w-full bg-[#0b1326] border border-[#31394d]/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-          </div>
-          <div id="modalServerContainer" class="hidden">
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Zone / Server ID</label>
-            <input id="modalServerId" type="text" placeholder="Masalan: 2001" class="w-full bg-[#0b1326] border border-[#31394d]/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-          </div>
-        </div>
-
-        <!-- PAKETLAR RO'YXATI -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-2">Paketni tanlang:</label>
-          <div id="modalPackagesList" class="space-y-2">
-            <!-- Paketlar dinamik joylashadi -->
-          </div>
-        </div>
-      </div>
-
-      <!-- MODAL FOOTER -->
-      <div class="p-4 border-t border-[#31394d]/40 bg-[#0b1326]/60">
-        <button id="modalBuyBtn" onclick="submitOrder()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/30 transition active:scale-95">
-          Xarid qilish
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FIXED BOTTOM TAB BAR -->
-  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#0b1326]/95 backdrop-blur-lg border-t border-[#31394d]/40 py-2">
-    <div class="max-w-md mx-auto grid grid-cols-5 text-center text-[10px]">
-      <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 text-indigo-400 font-semibold py-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        <span>Asosiy</span>
-      </button>
-      <button onclick="switchTab('balance')" id="nav-balance" class="nav-btn flex flex-col items-center gap-1 text-slate-400 font-medium py-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-        <span>Balans</span>
-      </button>
-      <button onclick="switchTab('transfer')" id="nav-transfer" class="nav-btn flex flex-col items-center gap-1 text-slate-400 font-medium py-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-        <span>O'tkazma</span>
-      </button>
-      <button onclick="switchTab('omonat')" id="nav-omonat" class="nav-btn flex flex-col items-center gap-1 text-slate-400 font-medium py-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
-        <span>Omonat</span>
-      </button>
-      <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center gap-1 text-slate-400 font-medium py-1">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-        <span>Profil</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- JAVASCRIPT VA INTEGRATSIYA LOGIKASI -->
-  <script>
-    // Telegram Web App SDK
-    const tg = window.Telegram?.WebApp;
-    if (tg) {
-      tg.ready();
-      tg.expand();
-      try { tg.enableClosingConfirmation(); } catch(e){}
-    }
-
-    // Holat (State)
-    let catalog = [];
-    let currentCategory = 'all';
-    let selectedGame = null;
-    let selectedPackage = null;
-    let userTelegramId = null;
-    let userCurrentBalance = 0; // Standart 0 so'm!
-
-    // Zaxira katalog
-    const fallbackCatalog = [
-      {
-        game_id: 141,
-        name: "PUBG Mobile",
-        id_label: "Player ID",
-        requires_server: false,
-        packages: [
-          { paket_id: 1, name: "60 UC", price: 12500 },
-          { paket_id: 2, name: "325 UC", price: 62000 },
-          { paket_id: 3, name: "660 UC", price: 124000 }
-        ]
-      },
-      {
-        game_id: 54,
-        name: "Mobile Legends",
-        id_label: "User ID",
-        requires_server: true,
-        packages: [
-          { paket_id: 1, name: "86 Diamonds", price: 18000 },
-          { paket_id: 2, name: "172 Diamonds", price: 35000 },
-          { paket_id: 3, name: "Weekly Diamond Pass", price: 25000 }
-        ]
-      },
-      {
-        game_id: 888001,
-        name: "Telegram Stars",
-        id_label: "Username (@)",
-        requires_server: false,
-        packages: [
-          { paket_id: 50, name: "50 Stars ⭐", price: 13000 },
-          { paket_id: 100, name: "100 Stars ⭐", price: 25500 },
-          { paket_id: 500, name: "500 Stars ⭐", price: 125000 }
-        ]
-      },
-      {
-        game_id: 888002,
-        name: "Telegram Premium",
-        id_label: "Username (@)",
-        requires_server: false,
-        packages: [
-          { paket_id: 3, name: "3 oylik obuna", price: 145000 },
-          { paket_id: 6, name: "6 oylik obuna", price: 220000 }
-        ]
-      },
-      {
-        game_id: 999001,
-        name: "Grand Mobile",
-        id_label: "Grand Mobile ID",
-        requires_server: false,
-        manual: true,
-        packages: [
-          { paket_id: 15, name: "15 GC", price: 3000 },
-          { paket_id: 30, name: "30 GC", price: 5500 }
-        ]
-      },
-      {
-        game_id: 77,
-        name: "Free Fire",
-        id_label: "Player ID",
-        requires_server: false,
-        packages: [
-          { paket_id: 100, name: "100 Diamonds", price: 14000 },
-          { paket_id: 310, name: "310 Diamonds", price: 41000 }
-        ]
-      },
-      {
-        game_id: 88,
-        name: "Roblox",
-        id_label: "Roblox Username",
-        requires_server: false,
-        packages: [
-          { paket_id: 80, name: "80 Robux", price: 15000 },
-          { paket_id: 400, name: "400 Robux", price: 68000 }
-        ]
-      }
-    ];
-
-    window.addEventListener('DOMContentLoaded', () => {
-      initUser();
-      loadCatalog();
-      loadUserBalance();
-    });
-
-    // Foydalanuvchini aniqlash
-    function initUser() {
-      const user = tg?.initDataUnsafe?.user;
-      if (user) {
-        userTelegramId = user.id;
-        document.getElementById('userName').textContent = user.first_name || 'Foydalanuvchi';
-        document.getElementById('userId').textContent = 'ID: ' + user.id;
-        document.getElementById('profileId').textContent = user.id;
-        document.getElementById('profileUsername').textContent = user.username ? '@' + user.username : 'Mavjud emas';
-        if (user.first_name) {
-          document.getElementById('userAvatar').textContent = user.first_name.charAt(0).toUpperCase();
-        }
-      } else {
-        document.getElementById('userId').textContent = 'ID: ...';
-        document.getElementById('profileId').textContent = '...';
-        document.getElementById('profileUsername').textContent = '@donuz2bot';
-      }
-      updateBalanceUI(0);
-    }
-
-    // Botdan balansni tortish (/api/me)
-    async function loadUserBalance() {
-      if (!userTelegramId) {
-        updateBalanceUI(0);
-        return;
-      }
-      try {
-        const res = await fetch(`/api/me?user_id=${userTelegramId}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (data && typeof data.balance !== 'undefined') {
-            userCurrentBalance = Number(data.balance);
-            updateBalanceUI(userCurrentBalance);
-            return;
-          }
-        }
-      } catch (e) {}
-      updateBalanceUI(0);
-    }
-
-    function updateBalanceUI(amount) {
-      const formatted = Number(amount).toLocaleString() + " so'm";
-      document.getElementById('userBalance').textContent = formatted;
-      document.getElementById('profileBalance').textContent = formatted;
-    }
-
-    // @donuz2bot ga to'g'ridan-to'g'ri o'tish
-    function openTopUpBot() {
-      if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
-      const botUrl = "https://t.me/donuz2bot";
-      if (tg && typeof tg.openTelegramLink === 'function') {
-        tg.openTelegramLink(botUrl);
-      } else {
-        window.open(botUrl, '_blank');
-      }
-    }
-
-    // Katalogni backend'dan yuklash (/api/catalog)
-    async function loadCatalog(showToastFeedback = false) {
-      if (showToastFeedback && tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
-
-      try {
-        const res = await fetch('/api/catalog');
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.games && Array.isArray(data.games) && data.games.length > 0) {
-            catalog = data.games;
-          } else {
-            catalog = fallbackCatalog;
-          }
-        } else {
-          catalog = fallbackCatalog;
-        }
-      } catch (err) {
-        catalog = fallbackCatalog;
-      }
-
-      renderCatalog();
-      if (showToastFeedback) showToast("Katalog yangilandi", "success");
-    }
-
-    function renderCatalog() {
-      const container = document.getElementById('catalogContainer');
-      const search = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-
-      let filtered = catalog.filter(item => {
-        const matchesSearch = item.name.toLowerCase().includes(search);
-        if (!matchesSearch) return false;
-
-        if (currentCategory === 'games') {
-          return !item.name.toLowerCase().includes('stars') && !item.name.toLowerCase().includes('premium') && item.game_id !== 999001;
-        }
-        if (currentCategory === 'telegram') {
-          return item.name.toLowerCase().includes('stars') || item.name.toLowerCase().includes('premium');
-        }
-        if (currentCategory === 'grand') {
-          return item.game_id === 999001 || item.name.toLowerCase().includes('grand');
-        }
-        return true;
-      });
-
-      if (filtered.length === 0) {
-        container.innerHTML = `
-          <div class="col-span-2 py-10 text-center text-slate-400 text-xs">
-            Qidiruv bo'yicha mahsulot topilmadi.
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = filtered.map(item => {
-        const icon = getGameIcon(item.name, item.game_id);
-        const isAuto = !item.manual;
-        const count = item.packages ? item.packages.length : 0;
-
-        return `
-          <div onclick="openGameModal(${item.game_id})" class="bg-[#131b2e] border border-[#31394d]/40 hover:border-indigo-500/50 active:scale-95 transition-all duration-200 rounded-2xl p-3 flex flex-col justify-between cursor-pointer group shadow-sm">
-            <div>
-              <div class="flex items-start justify-between mb-2">
-                <div class="w-10 h-10 rounded-xl ${icon.bg} ${icon.color} flex items-center justify-center text-lg font-bold shadow-inner">
-                  ${icon.emoji}
-                </div>
-                <span class="text-[9px] px-1.5 py-0.5 rounded-full ${isAuto ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'} font-semibold">
-                  ${isAuto ? 'Avto' : 'Manual'}
-                </span>
-              </div>
-              <h3 class="font-bold text-white text-xs leading-snug group-hover:text-indigo-300 transition">${item.name}</h3>
-              <p class="text-[10px] text-slate-400 mt-0.5">${count} ta paket</p>
-            </div>
-            <div class="mt-3 flex items-center justify-between pt-2 border-t border-[#31394d]/30 text-[10px] text-indigo-400 font-semibold">
-              <span>Xarid qilish</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function getGameIcon(name, id) {
-      const n = name.toLowerCase();
-      if (n.includes('pubg')) return { emoji: '🎯', bg: 'bg-amber-500/10', color: 'text-amber-400' };
-      if (n.includes('legend') || n.includes('mlbb')) return { emoji: '🛡️', bg: 'bg-sky-500/10', color: 'text-sky-400' };
-      if (n.includes('star')) return { emoji: '⭐', bg: 'bg-amber-400/10', color: 'text-amber-300' };
-      if (n.includes('premium')) return { emoji: '💎', bg: 'bg-purple-500/10', color: 'text-purple-400' };
-      if (n.includes('grand')) return { emoji: '🚗', bg: 'bg-emerald-500/10', color: 'text-emerald-400' };
-      if (n.includes('free fire')) return { emoji: '🔥', bg: 'bg-orange-500/10', color: 'text-orange-400' };
-      if (n.includes('roblox')) return { emoji: '🧊', bg: 'bg-red-500/10', color: 'text-red-400' };
-      return { emoji: '🎮', bg: 'bg-indigo-500/10', color: 'text-indigo-400' };
-    }
-
-    function setCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.className = 'cat-btn px-3.5 py-1.5 rounded-xl bg-[#131b2e] text-slate-300 hover:text-white border border-[#31394d]/50 whitespace-nowrap';
-      });
-      const activeBtn = document.getElementById('cat-' + cat);
-      if (activeBtn) {
-        activeBtn.className = 'cat-btn px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white whitespace-nowrap shadow-sm shadow-indigo-600/30';
-      }
-      if (tg?.HapticFeedback) tg.HapticFeedback.selectionChanged();
-      renderCatalog();
-    }
-
-    function filterGames() {
-      renderCatalog();
-    }
-
-    function openGameModal(gameId) {
-      selectedGame = catalog.find(g => g.game_id === gameId);
-      if (!selectedGame) return;
-
-      selectedPackage = null;
-      document.getElementById('modalGameTitle').textContent = selectedGame.name;
-      document.getElementById('modalIdLabel').textContent = selectedGame.id_label || 'Player ID';
-      document.getElementById('modalPlayerId').value = '';
-      
-      const serverContainer = document.getElementById('modalServerContainer');
-      if (selectedGame.requires_server) {
-        serverContainer.classList.remove('hidden');
-        document.getElementById('modalServerId').value = '';
-      } else {
-        serverContainer.classList.add('hidden');
-      }
-
-      const pkgsList = document.getElementById('modalPackagesList');
-      const packages = selectedGame.packages || [];
-
-      if (packages.length === 0) {
-        pkgsList.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">Paketlar tez orada qo'shiladi.</p>`;
-      } else {
-        pkgsList.innerHTML = packages.map((pkg) => `
-          <div onclick="selectPackage(${pkg.paket_id})" id="pkg-card-${pkg.paket_id}" class="pkg-card p-3 rounded-xl bg-[#0b1326] border border-[#31394d]/50 hover:border-indigo-500/40 flex items-center justify-between cursor-pointer transition">
-            <span class="text-xs font-semibold text-white">${pkg.name}</span>
-            <span class="text-xs font-bold text-indigo-400">${Number(pkg.price).toLocaleString()} so'm</span>
-          </div>
-        `).join('');
-
-        selectPackage(packages[0].paket_id);
-      }
-
-      document.getElementById('gameModal').classList.remove('hidden');
-      if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
-    }
-
-    function selectPackage(paketId) {
-      if (!selectedGame) return;
-      selectedPackage = selectedGame.packages.find(p => p.paket_id === paketId);
-
-      document.querySelectorAll('.pkg-card').forEach(c => {
-        c.classList.remove('border-indigo-500', 'bg-indigo-950/20');
-        c.classList.add('border-[#31394d]/50', 'bg-[#0b1326]');
-      });
-
-      const active = document.getElementById('pkg-card-' + paketId);
-      if (active) {
-        active.classList.add('border-indigo-500', 'bg-indigo-950/20');
-        active.classList.remove('border-[#31394d]/50', 'bg-[#0b1326]');
-      }
-      if (tg?.HapticFeedback) tg.HapticFeedback.selectionChanged();
-    }
-
-    function closeModal() {
-      document.getElementById('gameModal').classList.add('hidden');
-    }
-
-    // Buyurtma berish (/api/order)
-    async function submitOrder() {
-      const playerId = document.getElementById('modalPlayerId').value.trim();
-      const serverId = document.getElementById('modalServerId').value.trim();
-
-      if (!playerId) {
-        showToast("Iltimos, ID raqamni kiriting!", "warning");
-        return;
-      }
-      if (selectedGame.requires_server && !serverId) {
-        showToast("Zone / Server ID ni kiriting!", "warning");
-        return;
-      }
-      if (!selectedPackage) {
-        showToast("Iltimos, paketni tanlang!", "warning");
-        return;
-      }
-
-      // Balans tekshiruvi
-      if (userCurrentBalance < selectedPackage.price) {
-        showToast("Hisobingizda mablag' yetarli emas!", "warning");
-        setTimeout(() => {
-          if (confirm("Balansingiz yetarli emas. @donuz2bot orqali hisobni to'ldirasizmi?")) {
-            openTopUpBot();
-          }
-        }, 300);
-        return;
-      }
-
-      if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('heavy');
-
-      const btn = document.getElementById('modalBuyBtn');
-      btn.disabled = true;
-      btn.textContent = "Buyurtma berilmoqda...";
-
-      try {
-        const payload = {
-          game_id: selectedGame.game_id,
-          paket_id: selectedPackage.paket_id,
-          player_id: playerId,
-          server_id: serverId,
-          telegram_id: userTelegramId
-        };
-
-        const res = await fetch('/api/order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-        if (data.ok) {
-          showToast(`✅ Buyurtma qabul qilindi!`, "success");
-          closeModal();
-          loadUserBalance();
-        } else {
-          showToast(data.error || "Balans yetarli emas!", "error");
-        }
-      } catch (e) {
-        showToast("Buyurtma yuborildi", "success");
-        closeModal();
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Xarid qilish";
-      }
-    }
-
-    function switchTab(tab) {
-      ['home', 'balance', 'transfer', 'omonat', 'profile'].forEach(t => {
-        const sec = document.getElementById('tab-' + t);
-        const nav = document.getElementById('nav-' + t);
-        if (sec) sec.classList.add('hidden');
-        if (nav) {
-          nav.classList.remove('text-indigo-400');
-          nav.classList.add('text-slate-400');
-        }
-      });
-
-      const activeSec = document.getElementById('tab-' + tab);
-      const activeNav = document.getElementById('nav-' + tab);
-      if (activeSec) activeSec.classList.remove('hidden');
-      if (activeNav) {
-        activeNav.classList.add('text-indigo-400');
-        activeNav.classList.remove('text-slate-400');
-      }
-
-      if (tg?.HapticFeedback) tg.HapticFeedback.selectionChanged();
-    }
-
-    function submitTransfer() {
-      showToast("Mablag' yetarli emas!", "warning");
-    }
-
-    function submitOmonat() {
-      showToast("Mablag' yetarli emas!", "warning");
-    }
-
-    function showToast(text, type = "info") {
-      const toast = document.getElementById('toast');
-      const toastText = document.getElementById('toastText');
-      const toastIcon = document.getElementById('toastIcon');
-
-      toastText.textContent = text;
-      toastIcon.textContent = type === "success" ? "✅" : (type === "warning" ? "⚠️" : (type === "error" ? "❌" : "ℹ️"));
-
-      toast.classList.remove('-translate-y-20', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.add('-translate-y-20', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 2500);
-    }
-  </script>
+</main>
+<footer>GAME DONAT · Xavfsiz xarid uchun tasdiqlash kodini hech kimga bermang.</footer>
+<script>
+/*
+  Agar index.html boshqa domen/hostingda tursa, API_BASE qiymatiga
+  Python backend Render URL manzilini yozing. Masalan: https://sizning-servisingiz.onrender.com
+  Agar HTML Python backend bilan bir domenda bo‘lsa, bo‘sh qoldiring.
+*/
+const API_BASE = "";
+const $ = id => document.getElementById(id);
+let games = [];
+let selectedGame = null;
+let selectedPackage = null;
+let checked = false;
+let authToken = sessionStorage.getItem("game_donat_token") || "";
+let userId = sessionStorage.getItem("game_donat_uid") || "";
+
+function money(v){return new Intl.NumberFormat("uz-UZ",{maximumFractionDigits:0}).format(Number(v||0))+" so‘m"}
+function showStatus(id,message,type="info"){const el=$(id);el.textContent=message;el.className="status show "+type}
+async function api(path, options={}){
+  const headers={"Content-Type":"application/json",...(options.headers||{})};
+  if(authToken) headers.Authorization="Bearer "+authToken;
+  const response=await fetch(API_BASE+path,{...options,headers});
+  let data={};try{data=await response.json()}catch(e){}
+  if(!response.ok && !data.error) data.error="Server bilan bog‘lanishda xatolik ("+response.status+").";
+  return data;
+}
+function updateAuthUI(){
+  $("accountId").textContent=userId||"Kirilmagan";
+  $("loginNav").textContent=authToken?"Hisobim":"Kirish";
+  $("logoutBtn").classList.toggle("hidden",!authToken);
+  $("authPanel").classList.toggle("hidden",!!authToken);
+  if(!authToken){$("balance").textContent="— so‘m";$("topBalance").textContent="Balans: —";}
+}
+async function loadCatalog(){
+  $("catalog").innerHTML='<div class="empty">Katalog yuklanmoqda...</div>';
+  try{
+    const data=await api("/api/catalog");
+    if(!data.ok) throw new Error(data.error||"Katalog olinmadi.");
+    games=Array.isArray(data.games)?data.games:[];
+    $("game").innerHTML='<option value="">O‘yinni tanlang</option>'+games.map(g=>`<option value="${g.game_id}">${escapeHtml(g.name)}</option>`).join("");
+    $("catalog").innerHTML=games.length?games.map(g=>`<div class="game"><strong>${escapeHtml(g.name)}</strong><span>${(g.packages||[]).length} ta paket</span></div>`).join(""):'<div class="empty">Hozircha o‘yinlar mavjud emas.</div>';
+    if(games.length===0) $("catalog").innerHTML='<div class="empty">Katalog bo‘sh.</div>';
+  }catch(e){$("catalog").innerHTML='<div class="empty">'+escapeHtml(e.message)+'</div>';$("game").innerHTML='<option value="">Katalog yuklanmadi</option>';}
+}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function onGameChange(){
+  const id=Number($("game").value);selectedGame=games.find(g=>Number(g.game_id)===id)||null;
+  selectedPackage=null;checked=false;$("orderBtn").disabled=true;$("orderStatus").className="status";
+  $("packageWrap").classList.toggle("hidden",!selectedGame);
+  $("serverWrap").classList.toggle("hidden",!(selectedGame&&selectedGame.requires_server));
+  $("charWrap").classList.toggle("hidden",!(selectedGame&&selectedGame.game_id===141));
+  $("playerLabel").textContent=selectedGame?.id_label||"Player ID";
+  $("package").innerHTML=selectedGame?(selectedGame.packages||[]).map(p=>`<option value="${p.paket_id}">${escapeHtml(p.name)} — ${money(p.price)}</option>`).join(""):'';
+  updatePackage();
+}
+function updatePackage(){
+  const id=Number($("package").value);
+  selectedPackage=selectedGame?.packages?.find(p=>Number(p.paket_id)===id)||selectedGame?.packages?.[0]||null;
+  checked=false;$("orderBtn").disabled=true;
+}
+async function checkId(){
+  if(!selectedGame)return showStatus("orderStatus","Avval o‘yinni tanlang.","err");
+  const player_id=$("playerId").value.trim(),server_id=$("serverId").value.trim();
+  if(!player_id)return showStatus("orderStatus","Player ID kiriting.","err");
+  if(selectedGame.requires_server&&!server_id)return showStatus("orderStatus","Server ID kiriting.","err");
+  $("checkBtn").disabled=true;
+  try{
+    const d=await api("/api/check-id",{method:"POST",body:JSON.stringify({game_id:selectedGame.game_id,player_id,server_id,charname:$("charName").value.trim()})});
+    if(d.ok){checked=true;$("orderBtn").disabled=!authToken||!selectedPackage;showStatus("orderStatus",d.message||"ID qabul qilindi. Buyurtma berishingiz mumkin.","ok");}
+    else{checked=false;$("orderBtn").disabled=true;showStatus("orderStatus",d.error||"ID tekshiruvidan o‘tmadi.","err");}
+  }catch(e){showStatus("orderStatus",e.message,"err");}
+  finally{$("checkBtn").disabled=false;}
+}
+async function createOrder(){
+  if(!authToken){showStatus("orderStatus","Buyurtma uchun avval Telegram orqali kiring.","err");return;}
+  if(!selectedGame||!selectedPackage)return showStatus("orderStatus","O‘yin va paketni tanlang.","err");
+  if(!checked)return showStatus("orderStatus","Avval ID tekshirish tugmasini bosing.","err");
+  if(!confirm(`${selectedGame.name} — ${selectedPackage.name}\nNarx: ${money(selectedPackage.price)}\nBuyurtmani tasdiqlaysizmi?`))return;
+  $("orderBtn").disabled=true;
+  try{
+    const d=await api("/api/order",{method:"POST",body:JSON.stringify({game_id:selectedGame.game_id,paket_id:selectedPackage.paket_id,player_id:$("playerId").value.trim(),server_id:$("serverId").value.trim()})});
+    if(d.ok){showStatus("orderStatus",`${d.message||"Buyurtma qabul qilindi."} Buyurtma №${d.order_id||"—"}. Holat: ${d.status||"processing"}.`,"ok");checked=false;await refreshMe();}
+    else{showStatus("orderStatus",d.error||"Buyurtma bajarilmadi.","err");}
+  }catch(e){showStatus("orderStatus",e.message,"err");}
+  finally{$("orderBtn").disabled=!checked||!authToken;}
+}
+async function requestCode(){
+  const telegram_id=$("telegramId").value.trim();
+  if(!/^\d+$/.test(telegram_id))return showStatus("authStatus","Telegram ID faqat raqamlardan iborat bo‘lishi kerak.","err");
+  $("requestCode").disabled=true;
+  try{
+    const d=await api("/api/auth/request",{method:"POST",body:JSON.stringify({telegram_id})});
+    if(d.ok){$("codeArea").classList.remove("hidden");showStatus("authStatus",d.message||"Kod Telegram botga yuborildi.","ok");}
+    else showStatus("authStatus",d.error||d.message||"Kod yuborilmadi.","err");
+  }catch(e){showStatus("authStatus",e.message,"err");}
+  finally{$("requestCode").disabled=false;}
+}
+async function verifyCode(){
+  const telegram_id=$("telegramId").value.trim(),code=$("authCode").value.trim();
+  if(!/^\d{6}$/.test(code))return showStatus("authStatus","6 xonali kodni kiriting.","err");
+  $("verifyCode").disabled=true;
+  try{
+    const d=await api("/api/auth/verify",{method:"POST",body:JSON.stringify({telegram_id,code})});
+    if(!d.ok)throw new Error(d.error||"Kod tasdiqlanmadi.");
+    authToken=d.token;userId=String(d.user_id);sessionStorage.setItem("game_donat_token",authToken);sessionStorage.setItem("game_donat_uid",userId);
+    updateAuthUI();showStatus("authStatus","Muvaffaqiyatli kirdingiz!","ok");await refreshMe();
+  }catch(e){showStatus("authStatus",e.message,"err");}
+  finally{$("verifyCode").disabled=false;}
+}
+async function refreshMe(){
+  if(!authToken)return;
+  try{
+    const d=await api("/api/me");
+    if(!d.ok)throw new Error(d.error||"Sessiya tugagan.");
+    $("balance").textContent=money(d.balance);$("topBalance").textContent="Balans: "+money(d.balance);
+    $("accountId").textContent=d.user_id;
+  }catch(e){
+    authToken="";userId="";sessionStorage.removeItem("game_donat_token");sessionStorage.removeItem("game_donat_uid");updateAuthUI();
+    showStatus("authStatus",e.message+" Qayta kiring.","err");
+  }
+}
+$("game").addEventListener("change",onGameChange);
+$("package").addEventListener("change",updatePackage);
+$("checkBtn").addEventListener("click",checkId);
+$("orderBtn").addEventListener("click",createOrder);
+$("requestCode").addEventListener("click",requestCode);
+$("verifyCode").addEventListener("click",verifyCode);
+$("refreshBtn").addEventListener("click",loadCatalog);
+$("refreshBalance").addEventListener("click",refreshMe);
+$("loginNav").addEventListener("click",()=>{if(!authToken)$("authPanel").scrollIntoView({behavior:"smooth"});else $("balance").scrollIntoView({behavior:"smooth"});});
+$("logoutBtn").addEventListener("click",()=>{authToken="";userId="";sessionStorage.removeItem("game_donat_token");sessionStorage.removeItem("game_donat_uid");updateAuthUI();$("orderBtn").disabled=true;});
+updateAuthUI();loadCatalog();if(authToken)refreshMe();
+</script>
 </body>
 </html>
