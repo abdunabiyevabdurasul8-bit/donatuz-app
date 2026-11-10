@@ -1,712 +1,233 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="uz"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-lowest":"#0a0e18","outline":"#849495","primary-fixed":"#7df4ff","on-background":"#dfe2f1","tertiary-container":"#65f2b5","inverse-on-surface":"#2c303b","on-secondary-fixed":"#23005c","inverse-surface":"#dfe2f1","secondary-fixed-dim":"#d0bcff","surface":"#0f131d","on-tertiary":"#003824","secondary-fixed":"#e9ddff","surface-tint":"#00dbe9","on-primary-container":"#006970","tertiary":"#d8ffe7","surface-container":"#1c1f2a","on-secondary":"#3c0091","inverse-primary":"#006970","on-error":"#690005","surface-dim":"#0f131d","background":"#0f131d","on-surface-variant":"#b9cacb","surface-variant":"#313540","on-tertiary-fixed":"#002113","on-error-container":"#ffdad6","on-primary-fixed-variant":"#004f54","tertiary-fixed-dim":"#4edea3","on-secondary-fixed-variant":"#5516be","on-secondary-container":"#c4abff","primary-container":"#00f0ff","secondary":"#d0bcff","tertiary-fixed":"#6ffbbe","on-primary":"#00363a","surface-container-high":"#262a35","primary":"#dbfcff","surface-bright":"#353944","outline-variant":"#3b494b","error-container":"#93000a","surface-container-low":"#171b26","surface-container-highest":"#313540","on-primary-fixed":"#002022","on-surface":"#dfe2f1","primary-fixed-dim":"#00dbe9","on-tertiary-container":"#006d4a","secondary-container":"#571bc1","error":"#ffb4ab","on-tertiary-fixed-variant":"#005236"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-sm":"0.5rem",margin:"1rem",gutter:"1.25rem","space-xl":"2.5rem","margin-desktop":"2rem","space-lg":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","space-md":"1rem"},fontFamily:{"label-caps":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"body-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-sm":["Space Grotesk"],"label-code":["JetBrains Mono"],"display-hero":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"]},fontSize:{"label-caps":["11px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"700"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"0",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"600"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"0.01em",fontWeight:"600"}],"label-code":["13px",{lineHeight:"18px",letterSpacing:"0.04em",fontWeight:"500"}],"display-hero":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"display-hero-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-gutter-desktop max-w-[1440px] mx-auto flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-xs text-primary font-headline-md tracking-tight uppercase select-none" data-path="oyinlar-va-donat" href="#"><span class="material-symbols-outlined text-primary-fixed-dim text-[26px]">sports_esports</span><span class="font-headline-md text-headline-sm">DONUZ<span class="text-primary-fixed-dim">.DONAT</span></span></a><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-low rounded-full"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-code text-body-sm text-on-surface-variant">Render Online <span class="text-tertiary-fixed">:10000</span></span></div></div><nav class="hidden lg:flex items-center gap-1 bg-surface-container-lowest/60 p-1 rounded-full" data-active-classes="bg-surface-container-high text-primary-fixed font-headline-sm rounded-full shadow-[0_0_12px_rgba(0,219,233,0.15)]"><a class="px-space-md py-space-xs rounded-full font-headline-sm text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="oyinlar-va-donat" href="#">Oʻyinlar &amp; Donat</a><a class="px-space-md py-space-xs rounded-full font-headline-sm text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="stars-va-premium" href="#">Stars &amp; Premium</a><a class="px-space-md py-space-xs rounded-full font-headline-sm text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="grand-mobile" href="#">Grand Mobile</a><a class="px-space-md py-space-xs rounded-full font-headline-sm text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="balans-toldirish" href="#">Balans toʻldirish</a><a class="px-space-md py-space-xs rounded-full font-headline-sm text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="omonat-va-tarix" href="#">Omonat &amp; Tarix</a></nav><div class="flex items-center gap-space-sm"><div class="flex items-center bg-surface-container-low px-space-sm py-1.5 rounded-full"><span class="flex h-2 w-2 rounded-full bg-primary-fixed-dim animate-pulse mr-2"></span><span class="font-label-code text-body-sm text-primary font-bold mr-1">154,000</span><span class="font-label-code text-body-sm text-on-surface-variant">soʻm</span><a class="ml-2 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center hover:bg-primary-fixed-dim transition-colors" data-path="balans-toldirish" href="#"><span class="material-symbols-outlined text-on-primary-container text-[16px]">add</span></a></div><button class="hidden sm:flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors font-headline-sm text-body-sm" type="button"><span class="material-symbols-outlined text-[18px]">lock_open</span><span>Telegram orqali kirish</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
-<!-- Subtle cyber glow backdrop layers -->
-<div class="relative w-full max-w-[1440px] mx-auto px-gutter-desktop py-space-md">
-<!-- Top Telegram & Shared Balance Sync Banner (Bot va Sayt balansi 100% bitta) -->
-<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md md:p-space-lg mb-space-lg shadow-xl">
-<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary-fixed-dim/10 blur-3xl pointer-events-none"></div>
-<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
-<div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
-<!-- User identity and bot sync indicator -->
-<div class="flex items-start sm:items-center gap-space-md">
-<div class="relative w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0 shadow-inner">
-<span class="material-symbols-outlined text-primary-fixed text-headline-lg">verified_user</span>
-<span class="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-container opacity-75"></span>
-<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-tertiary-fixed"></span>
-</span>
+<html class="dark" lang="uz"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-tertiary': '#003825', 'on-error-container': '#ffdad6', 'primary-fixed': '#6ffbbe', 'on-tertiary-fixed-variant': '#005137', 'tertiary-fixed': '#85f8c4', 'secondary': '#adc6ff', 'error': '#ffb4ab', 'secondary-container': '#0566d9', 'surface-container-high': '#222a3d', 'inverse-surface': '#dae2fd', 'surface-variant': '#2d3449', 'surface': '#0b1326', 'secondary-fixed': '#d8e2ff', 'background': '#0b1326', 'on-error': '#690005', 'surface-bright': '#31394d', 'on-secondary': '#002e6a', 'surface-dim': '#0b1326', 'on-secondary-container': '#e6ecff', 'on-primary-fixed': '#002113', 'on-surface': '#dae2fd', 'tertiary-fixed-dim': '#68dba9', 'inverse-on-surface': '#283044', 'on-tertiary-container': '#00422c', 'on-primary-fixed-variant': '#005236', 'surface-tint': '#4edea3', 'surface-container-low': '#131b2e', 'outline-variant': '#3c4a42', 'on-tertiary-fixed': '#002114', 'surface-container-lowest': '#060e20', 'inverse-primary': '#006c49', 'primary': '#4edea3', 'secondary-fixed-dim': '#adc6ff', 'on-primary': '#003824', 'on-primary-container': '#00422b', 'primary-fixed-dim': '#4edea3', 'tertiary': '#68dba9', 'on-surface-variant': '#bbcabf', 'surface-container-highest': '#2d3449', 'on-secondary-fixed-variant': '#004395', 'on-background': '#dae2fd', 'tertiary-container': '#3eb686', 'surface-container': '#171f33', 'on-secondary-fixed': '#001a42', 'error-container': '#93000a', 'primary-container': '#10b981', 'outline': '#86948a' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-xs': '0.25rem', 'space-md': '1rem', 'space-xl': '1.75rem', 'space-lg': '1.25rem', 'gutter': '0.75rem', 'margin': '1rem', 'space-sm': '0.5rem' }, fontFamily: { 'body-md': ['Plus Jakarta Sans'], 'headline-xl': ['Plus Jakarta Sans'], 'body-lg': ['Plus Jakarta Sans'], 'label-mono': ['JetBrains Mono'], 'headline-xl-mobile': ['Plus Jakarta Sans'], 'label-badge': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'body-sm': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'] }, fontSize: { 'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'headline-xl': ['36px', { lineHeight: '44px', letterSpacing: '-0.03em', fontWeight: '700' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '500' }], 'label-mono': ['13px', { lineHeight: '18px', letterSpacing: '0.02em', fontWeight: '500' }], 'headline-xl-mobile': ['30px', { lineHeight: '38px', letterSpacing: '-0.02em', fontWeight: '700' }], 'label-badge': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '700' }], 'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '700' }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-14 px-margin flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Yopish" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface active:scale-95 transition-transform" type="button"><span class="material-symbols-outlined text-[20px]">close</span></button><button aria-label="Boshqa parametrlar" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface active:scale-95 transition-transform" type="button"><span class="material-symbols-outlined text-[20px]">more_vert</span></button></div><div class="flex items-center justify-center flex-1 px-space-xs"><span class="font-headline-md text-headline-md text-on-surface truncate">Asosiy</span></div><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin pt-14 pb-24 bg-surface"><div class="flex flex-col w-full gap-space-lg select-none">
+<!-- Dynamic Balance Card (Main Hero) -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-lg shadow-xl shadow-surface-container-lowest/80">
+<div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-36 h-36 rounded-full bg-secondary-container/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Asosiy hamyon qoldig‘i</span>
 </div>
-<div class="flex flex-col">
-<div class="flex flex-wrap items-center gap-space-xs">
-<span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider bg-surface-container px-2 py-0.5 rounded">Python Bot Sync Active</span>
-<span class="font-label-code text-body-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">link</span>
-                Telegram ID: <span class="text-on-surface font-semibold">649201842</span>
-</span>
+<button aria-label="Balansni yashirish yoki ko'rsatish" class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant active:scale-90 transition-transform" id="toggleBalanceBtn" type="button">
+<span class="material-symbols-outlined text-[18px]" id="balanceEyeIcon">visibility</span>
+</button>
 </div>
 <div class="flex items-baseline gap-space-xs mt-1">
-<span class="font-headline-md text-headline-md text-on-surface">Yagona Balans:</span>
-<span class="font-headline-lg text-headline-lg text-primary-container" id="user-balance-display">154,000</span>
-<span class="font-label-code text-body-md text-on-surface-variant">soʻm</span>
-<span class="hidden sm:inline-block font-body-sm text-body-sm text-outline ml-2">(Bot &amp; Sayt 100% sinxron)</span>
-</div>
-</div>
-</div>
-<!-- Quick actions -->
-<div class="flex flex-wrap items-center gap-space-sm pt-space-xs lg:pt-0">
-<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-full bg-surface-container-highest hover:bg-surface-bright text-on-surface transition-colors font-headline-sm text-body-sm" type="button">
-<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">sync</span>
-<span>Auth yangilash</span>
-</button>
-<a class="flex items-center gap-space-xs px-space-lg py-2.5 rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container transition-all font-headline-sm text-body-sm shadow-[0_0_18px_rgba(0,240,255,0.35)] hover:shadow-[0_0_24px_rgba(0,240,255,0.6)]" data-path="balans-toldirish" href="#">
-<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
-<span class="font-bold">Hisobni toʻldirish</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Active Games Segmented Bar (/api/catalog) -->
-<div class="flex flex-col gap-space-sm mb-space-lg">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Katalog tanlovi</span>
-<span class="text-body-sm font-label-code text-primary-fixed-dim">[/api/catalog]</span>
-</div>
-<div class="flex items-center gap-1.5 text-tertiary-fixed font-label-code text-body-sm">
-<span class="inline-block w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>
-          Avtomat yetkazib berish (0.5 - 3 daqiqa)
+<div class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight" id="balanceValueDisplay">
+          145,000
         </div>
+<span class="font-label-mono text-label-mono text-primary font-bold">UZS</span>
 </div>
-<!-- Game selector tabs -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm bg-surface-container-lowest p-1.5 rounded-xl">
-<!-- PUBG Active -->
-<button class="game-tab-btn active-tab flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high text-primary-fixed transition-all text-left shadow-[0_0_15px_rgba(0,219,233,0.12)]" id="tab-game-pubg" onclick="switchGame('pubg', 141)">
-<div class="w-10 h-10 rounded bg-surface-container-highest overflow-hidden flex items-center justify-center shrink-0">
-<img class="w-full h-full object-cover" data-alt="PUBG Mobile battle royale golden helmet emblem with futuristic cyber cyan lighting on deep dark obsidian background, esports vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi0BBfjzj6p7R6Gw1PTt0-hEUcO6_wsGBWWoX2mPAeFgZOowSJQjgAkC-Z7JNXdwtxBLFIWZZ9qGU3xSWj5LviaNOEnxs7zWERpT98Nj9iXFB9JBYvwcc3Bof83Xok068Bn8r4N_CVJvOwipGE44eK0mvU-K5PdJ8CSkELRl-p1Ym9A22k9ln_rbA9ZQLCJ_FhBxQNFVfLETpJBMqvFdDZ8aRqr_BKXaIO56Qg-xxg"/>
+<div class="flex items-center justify-between pt-space-xs mt-space-xs">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest/70 px-space-sm py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-[15px]">verified_user</span>
+<span class="font-label-badge text-label-badge text-on-surface">ID: 894 122 09</span>
 </div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-md truncate font-bold text-on-surface">PUBG Mobile</div>
-<div class="font-label-code text-body-sm text-outline truncate">ID: 141 • Global &amp; KR</div>
-</div>
-</button>
-<!-- Mobile Legends -->
-<button class="game-tab-btn flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all text-left" id="tab-game-mlbb" onclick="switchGame('mlbb', 54)">
-<div class="w-10 h-10 rounded bg-surface-container-highest overflow-hidden flex items-center justify-center shrink-0">
-<img class="w-full h-full object-cover" data-alt="Mobile Legends Bang Bang crystal blue diamond icon with magical golden sparkles against deep cosmic purple space background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-JtxZn4OPLZcOvnHVTRbJWIYWWUh6YzILGpGIz0xrUTqygDh0GaghX7baISNo_mj27q6xWSRNkEkLqIzoBBDBur5lHaXvHeCERsFCiVxsGzekrnIOGi4WPjB_Al9KWKnCbBGBCIvi2gyy3USBoTWRqct086ZEUcRKSO987mlzjo56Ypnm1tsqGiFtIk4V4NXlWqaPP188i08I-iWg2HdXZ7JyQqKSbr3X1UAO9f2O"/>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-md truncate font-bold text-on-surface">Mobile Legends</div>
-<div class="font-label-code text-body-sm text-outline truncate">ID: 54 • Server ID kerak</div>
-</div>
-</button>
-<!-- Free Fire -->
-<button class="game-tab-btn flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all text-left" id="tab-game-ff" onclick="switchGame('ff', 88)">
-<div class="w-10 h-10 rounded bg-surface-container-highest overflow-hidden flex items-center justify-center shrink-0">
-<img class="w-full h-full object-cover" data-alt="Free Fire vibrant flaming dragon badge with glowing neon orange and red sparks on matte dark metal shield" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCRF-HOXybPOo5pJOBdd2QdH6uRys1N2p66OJNZa5PNj7BRovbQfU7hF2sjHbecRz36ZvAwLSrfPpFIuxIUs0LEn9PdMrNKoLgZexDZYIu378sgwVmBexK9jHdfjK1gUzEcmhoPiQuGvhVoqkH3Az99hvrCOmGHUNGBlSs1lGxnmqJeZyxcP5aKECtIcMH2ihA9SZYyAa2tUS07tMmMPpuRvSFAUb5uLaWKXQy96sZ"/>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-md truncate font-bold text-on-surface">Free Fire</div>
-<div class="font-label-code text-body-sm text-outline truncate">ID: 88 • Instant UID</div>
-</div>
-</button>
-<!-- Genshin Impact / Others -->
-<button class="game-tab-btn flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-all text-left" id="tab-game-genshin" onclick="switchGame('genshin', 19)">
-<div class="w-10 h-10 rounded bg-surface-container-highest overflow-hidden flex items-center justify-center shrink-0">
-<img class="w-full h-full object-cover" data-alt="Genshin Impact Primogem faceted star gemstone glowing with ethereal cyan and purple magic crystals on dark celestial backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYeyysv2ANqiGpts5Q5iijW1a6-l79TJWBkeUEGsjMPZlhB0Q5h92o2hrR15gfv9ZzLdaLMEechT0JbKZSB2oSt957wCfSsoLWtE-dqnIlWgj7jVxybqHctXDMpwz3I1ih-uc4ww_ScbV7CwCIVLalB12qhCX97M-uQrMCdgGBTFQ48Ii6ekWN0e18ImVjFKKW_NeGc1mlRa7qrngOKxfdw_XK2a97yn1bzwwy8Ykj"/>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-md truncate font-bold text-on-surface">Genshin Impact</div>
-<div class="font-label-code text-body-sm text-outline truncate">ID: 19 • Genesis Crystals</div>
-</div>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary active:scale-95 transition-colors" id="copyIdBtn" type="button">
+<span class="font-label-badge text-label-badge" id="copyLabel">Nusxalash</span>
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
 </button>
 </div>
 </div>
-<!-- Main Operational Workspace: ID Verification & Packages Grid & Checkout Drawer -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
-<!-- Left & Center: Interactive Validation & Package Selector (8 Cols) -->
-<div class="lg:col-span-8 flex flex-col gap-space-lg">
-<!-- Interactive Player ID Validation Section (PlayPay Validator via /api/check-id) -->
-<div class="bg-surface-container-low rounded-xl p-space-md md:p-space-lg shadow-lg relative overflow-hidden">
-<div class="flex items-center justify-between mb-space-md">
-<div class="flex items-center gap-2">
-<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container font-headline-sm text-body-sm flex items-center justify-center">1</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Oʻyinchi ID maʼlumotlari</h2>
 </div>
-<span class="font-label-code text-body-sm text-outline flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">bolt</span>
-              PlayPay API Tekshiruvi
-            </span>
-</div>
-<!-- Dynamic Form Inputs -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-end">
-<!-- Primary Player ID -->
-<div class="md:col-span-8 flex flex-col gap-1.5" id="player-id-container">
-<label class="font-headline-sm text-body-sm text-on-surface-variant flex items-center justify-between" for="input-player-id">
-<span>Player ID raqami</span>
-<span class="font-label-code text-body-sm text-outline">Misol: 529381920</span>
-</label>
-<div class="relative">
-<input class="w-full bg-surface-container-highest text-on-surface font-label-code text-body-lg px-space-md py-3 rounded-lg outline-none focus:bg-surface-bright focus:shadow-[0_0_12px_rgba(0,240,255,0.25)] transition-all placeholder:text-outline-variant" id="input-player-id" placeholder="Oʻyin ID kiriting..." type="text" value="529381920"/>
-<button class="absolute right-3 top-3.5 text-outline hover:text-on-surface transition-colors" onclick="clearPlayerId()" type="button">
-<span class="material-symbols-outlined text-[18px]">backspace</span>
+<!-- Primary & Quick Actions -->
+<div class="flex flex-col gap-space-sm">
+<!-- Bright Green Prominent Action -->
+<button class="w-full h-14 rounded-xl bg-primary text-on-primary font-body-lg text-body-lg font-bold flex items-center justify-center gap-space-sm shadow-[0_4px_24px_-2px_rgba(78,222,163,0.35)] active:scale-[0.98] transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+<span>Hisobni to‘ldirish</span>
+</button>
+<!-- Secondary Action Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-12 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center gap-space-xs active:scale-[0.97] transition-transform shadow-md" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">swap_horiz</span>
+<span class="font-body-md text-body-md font-semibold">Pul o‘tkazish</span>
+</button>
+<button class="h-12 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center gap-space-xs active:scale-[0.97] transition-transform shadow-md" type="button">
+<span class="material-symbols-outlined text-secondary text-[20px]">history_toggle_off</span>
+<span class="font-body-md text-body-md font-semibold">Tarix</span>
 </button>
 </div>
 </div>
-<!-- Server ID (Conditional for MLBB) -->
-<div class="hidden md:col-span-4 flex-col gap-1.5" id="server-id-container">
-<label class="font-headline-sm text-body-sm text-on-surface-variant flex items-center justify-between" for="input-server-id">
-<span>Server (Zone ID)</span>
-<span class="font-label-code text-body-sm text-outline">(4 xonali)</span>
-</label>
-<input class="w-full bg-surface-container-highest text-on-surface font-label-code text-body-lg px-space-md py-3 rounded-lg outline-none focus:bg-surface-bright focus:shadow-[0_0_12px_rgba(0,240,255,0.25)] transition-all placeholder:text-outline-variant" id="input-server-id" placeholder="6042" type="text"/>
-</div>
-<!-- Verify Action Button -->
-<div class="md:col-span-4 w-full">
-<button class="w-full py-3 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary-fixed font-headline-sm text-body-md transition-all flex items-center justify-center gap-2 shadow-md" id="btn-verify-id" onclick="triggerIdVerification()" type="button">
-<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim" id="verify-spinner">search</span>
-<span id="verify-btn-text">🔎 ID tekshirish</span>
+<!-- Cards Section -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-md text-headline-md text-on-surface">Biriktirilgan kartalar</span>
+<button class="text-primary font-body-sm text-body-sm font-semibold flex items-center gap-0.5 active:opacity-75" type="button">
+<span>Barchasi (2)</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
 </button>
 </div>
+<!-- Cards List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Uzcard Item -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md transition-all active:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-7 rounded bg-surface-container-highest flex items-center justify-center px-1">
+<span class="font-label-mono text-label-mono font-bold text-secondary tracking-wider text-[11px]">UZCARD</span>
 </div>
-<!-- Live Verified Profile Result Banner -->
-<div class="mt-space-md p-space-sm md:p-space-md rounded-lg bg-surface-container flex items-center justify-between transition-all" id="verified-result-card">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface">Asosiy Karta</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">8600 •••• •••• 4641</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">contactless</span>
+</div>
+<div class="flex items-end justify-between pt-space-xs">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Balans</span>
+<span class="font-body-lg text-body-lg font-bold text-on-surface" data-masked-value="3,420,000 UZS">3,420,000 UZS</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-badge text-label-badge text-on-surface-variant">Faol</span>
+</div>
+</div>
+<!-- Humo Item -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md flex flex-col gap-space-sm shadow-md transition-all active:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-7 rounded bg-surface-container-highest flex items-center justify-center px-1">
+<span class="font-label-mono text-label-mono font-bold text-primary tracking-wider text-[11px]">HUMO</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface">Ish haqi kartasi</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">9860 •••• •••• 1120</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">credit_card</span>
+</div>
+<div class="flex items-end justify-between pt-space-xs">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Balans</span>
+<span class="font-body-lg text-body-lg font-bold text-on-surface" data-masked-value="854,500 UZS">854,500 UZS</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest font-label-badge text-label-badge text-on-surface-variant">Avto-to‘lov</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Auto-Payments -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-md text-headline-md text-on-surface">Avto-to‘lovlar</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">So‘nggilari</span>
+</div>
+<div class="flex flex-col rounded-xl bg-surface-container p-space-xs shadow-md">
+<!-- Item 1: Auto Recharge (Positive) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
 <div class="flex items-center gap-space-sm min-w-0">
-<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary-fixed shrink-0">
-<span class="material-symbols-outlined text-[24px]">sports_martial_arts</span>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
 </div>
-<div class="min-w-0">
-<div class="flex items-center gap-2">
-<span class="inline-block w-2 h-2 rounded-full bg-tertiary-fixed"></span>
-<span class="font-headline-sm text-body-md text-on-surface font-bold truncate">ShadowNinja_UZ</span>
-<span class="font-label-caps text-label-caps bg-tertiary-container/30 text-tertiary-fixed px-2 py-0.5 rounded">TASDIQLANDI</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">Avto to‘ldirish Uzcard</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-primary">Muvaffaqiyatli</span>
 </div>
-<div class="font-label-code text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
-<span>Hisob ID: <strong class="text-on-surface font-mono" id="disp-verified-id">529381920</strong></span>
-<span>•</span>
-<span>Server: Global (Avtomatik yetkazish)</span>
 </div>
 </div>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-body-lg text-body-lg font-bold text-primary">+50,000 UZS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14:20</span>
 </div>
-<div class="hidden sm:flex items-center gap-1 text-tertiary-fixed font-label-code text-body-sm">
-<span class="material-symbols-outlined text-[18px]">verified</span>
-<span>100% xatosiz yuklanadi</span>
 </div>
+<div class="h-[1px] w-full bg-surface-variant/40 my-0.5"></div>
+<!-- Item 2: Service fee (Negative) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">receipt_long</span>
 </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">Xizmat to‘lovi</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oylik obuna</span>
 </div>
-<!-- Package Selector Section (products table from Python DB) -->
-<div class="flex flex-col gap-space-md">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container font-headline-sm text-body-sm flex items-center justify-center">2</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Paketni tanlang</h2>
 </div>
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Avtomatik narx hisobi</span>
 </div>
-<!-- Grid of Packages -->
-<div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-space-sm md:gap-space-md" id="packages-grid">
-<!-- Item 1: 60 UC -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, '60 UC', 13000, 0)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-surface-container-high text-primary-fixed px-2 py-0.5 rounded">INSTANT</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
+<div class="flex flex-col items-end shrink-0 pl-space-xs">
+<span class="font-body-lg text-body-lg font-bold text-on-surface">-15,000 UZS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kecha</span>
 </div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-primary-container text-[32px]">monetization_on</span>
 </div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">60 UC</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">+0 Bonus</span>
 </div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">13,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Birlik: 216 soʻm/UC</span>
 </div>
+<!-- Micro-Banner for Security Delight -->
+<div class="flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
 </div>
-<!-- Item 2: 325 UC (Popular) -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, '325 UC', 65000, 3000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-bold">OVOZLI -5%</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+      Barcha to‘lovlar va kartalar Telegram himoyalangan sessiyasi orqali shifrlanadi.
+    </p>
 </div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-primary-container text-[32px]">diamond</span>
 </div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">325 UC</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">+25 UC Bonus</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">65,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Birlik: 200 soʻm/UC</span>
-</div>
-</div>
-<!-- Item 3: 660 UC (Active Selected by default) -->
-<div class="package-card selected-package cursor-pointer rounded-xl bg-surface-container p-space-md flex flex-col justify-between transition-all shadow-[0_0_20px_rgba(0,240,255,0.2)] relative overflow-hidden group" onclick="selectPackage(this, '660 UC', 128000, 8000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-primary-container text-on-primary-container px-2 py-0.5 rounded font-bold">TOP SOTUV 🔥</span>
-<span class="material-symbols-outlined text-primary-fixed-dim text-[18px] check-icon opacity-100" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-2 group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,240,255,0.3)]">
-<span class="material-symbols-outlined text-primary-fixed text-[34px]">military_tech</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">660 UC</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">Royale Pass tayyor</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-container font-bold font-label-code">128,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Eski narx: <s class="text-error">136,000</s></span>
-</div>
-</div>
-<!-- Item 4: 1800 UC -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, '1800 UC', 330000, 25000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-bold">-10% MEGABOX</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-primary-container text-[32px]">stars</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">1,800 UC</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">+150 UC Bonus</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">330,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Birlik: 183 soʻm/UC</span>
-</div>
-</div>
-<!-- Item 5: 3850 UC -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, '3850 UC', 690000, 45000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-surface-container-high text-primary-fixed px-2 py-0.5 rounded">ELITA</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-secondary text-[32px]">workspace_premium</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">3,850 UC</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">+350 UC Sovgʻa</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">690,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Premium VIP status</span>
-</div>
-</div>
-<!-- Item 6: 8100 UC -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, '8100 UC', 1420000, 95000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded font-bold">MAX BONUS</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-primary-fixed-dim text-[32px]">token</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">8,100 UC</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">+800 UC Bepul</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">1,420,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Birlik: 175 soʻm/UC</span>
-</div>
-</div>
-<!-- Item 7: Royale Pass Upgrade Card -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, 'Royale Pass A7', 145000, 10000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-bold">SEZON PASSI</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-secondary-fixed text-[32px]">shield_person</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">Pass A7 Elite</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">Toʻgʻridan faollashadi</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">145,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">1 oylik toʻliq dostup</span>
-</div>
-</div>
-<!-- Item 8: Custom UC Input or Elite Plus -->
-<div class="package-card cursor-pointer rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between transition-all hover:bg-surface-container relative overflow-hidden group" onclick="selectPackage(this, 'Elite Pass Plus', 340000, 20000)">
-<div class="flex justify-between items-start mb-space-sm">
-<span class="font-label-caps text-label-caps bg-surface-container-high text-on-surface px-2 py-0.5 rounded">EXCLUSIVE</span>
-<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-primary-fixed-dim transition-colors check-icon opacity-20">check_circle</span>
-</div>
-<div class="flex flex-col items-center text-center my-space-sm">
-<div class="w-14 h-14 rounded-full bg-surface-container-high/60 flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-<span class="material-symbols-outlined text-tertiary-fixed text-[32px]">card_membership</span>
-</div>
-<span class="font-headline-md text-headline-md text-on-surface font-bold">Pass Elite+</span>
-<span class="font-body-sm text-body-sm text-tertiary-fixed mt-0.5">+24 Rank oldinda</span>
-</div>
-<div class="mt-space-sm pt-space-xs flex flex-col items-center">
-<span class="font-headline-sm text-headline-sm text-primary-fixed font-bold font-label-code">340,000 soʻm</span>
-<span class="font-label-code text-body-sm text-outline">Maxsus ramkalar bilan</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Right Column: Order Checkout Card & Calculation Drawer (4 Cols) -->
-<div class="lg:col-span-4 flex flex-col gap-space-md">
-<div class="bg-surface-container-low rounded-xl p-space-md md:p-space-lg shadow-xl relative sticky top-24">
-<!-- Header -->
-<div class="flex items-center justify-between pb-space-sm">
-<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
-<span class="material-symbols-outlined text-primary-fixed">shopping_cart_checkout</span>
-<span>Buyurtma hisobi</span>
-</h3>
-<span class="font-label-code text-body-sm text-outline bg-surface-container px-2 py-0.5 rounded">/api/order</span>
-</div>
-<!-- Summary Items -->
-<div class="flex flex-col gap-space-sm py-space-md">
-<div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
-<span>Tanlangan oʻyin:</span>
-<span class="font-headline-sm text-on-surface font-semibold" id="summary-game-name">PUBG Mobile</span>
-</div>
-<div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
-<span>Oʻyinchi:</span>
-<span class="font-label-code text-tertiary-fixed font-semibold" id="summary-player-name">ShadowNinja_UZ</span>
-</div>
-<div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
-<span>Paket miqdori:</span>
-<span class="font-headline-sm text-primary-fixed font-bold" id="summary-package-name">660 UC</span>
-</div>
-<div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
-<span>Asl narxi:</span>
-<span class="font-label-code text-on-surface" id="summary-original-price">128,000 soʻm</span>
-</div>
-<!-- Promo Code Input (from Python DB promo_codes) -->
-<div class="flex flex-col gap-1.5 pt-space-xs">
-<label class="font-headline-sm text-body-sm text-on-surface-variant flex items-center justify-between" for="input-promo">
-<span>🎁 Promo kod bormi?</span>
-<span class="font-label-code text-body-sm text-primary-fixed-dim" id="promo-status"></span>
-</label>
-<div class="flex gap-2">
-<input class="w-full bg-surface-container-highest text-on-surface font-label-code text-body-md px-space-md py-2 rounded-lg outline-none uppercase placeholder:normal-case placeholder:text-outline-variant" id="input-promo" placeholder="Kodni kiriting (masalan: DONUZ2025)" type="text"/>
-<button class="px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-headline-sm text-body-sm shrink-0 transition-colors" onclick="applyPromoCode()" type="button">
-                  Qoʻllash
-                </button>
-</div>
-</div>
-<div class="hidden flex items-center justify-between font-body-md text-body-md text-tertiary-fixed" id="promo-discount-row">
-<span>Promo chegirma:</span>
-<span class="font-label-code font-bold" id="summary-discount">-0 soʻm</span>
-</div>
-<div class="my-space-xs h-px bg-surface-container-highest"></div>
-<!-- Balansdan yechilish va qoldiq -->
-<div class="flex items-center justify-between">
-<span class="font-headline-sm text-body-md text-on-surface">Jami toʻlov:</span>
-<span class="font-headline-lg text-headline-lg text-primary-container font-bold font-label-code" id="summary-total-price">128,000 soʻm</span>
-</div>
-<div class="flex items-center justify-between font-body-sm text-body-sm text-outline">
-<span>Hozirgi Telegram hisobi:</span>
-<span class="font-label-code text-on-surface font-semibold">154,000 soʻm</span>
-</div>
-<div class="flex items-center justify-between font-body-sm text-body-sm text-outline">
-<span>Toʻlovdan keyingi qoldiq:</span>
-<span class="font-label-code text-tertiary-fixed font-semibold" id="summary-remaining-balance">26,000 soʻm</span>
-</div>
-</div>
-<!-- Checkout CTA (Xarid qilish) -->
-<div class="flex flex-col gap-space-sm pt-space-xs">
-<button class="w-full py-3.5 px-space-md rounded-xl bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-headline-sm text-headline-sm transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_28px_rgba(0,240,255,0.65)] flex items-center justify-center gap-2" id="btn-submit-order" onclick="executeOrder()" type="button">
-<span class="material-symbols-outlined text-[22px]">flash_on</span>
-<span class="font-bold">Xarid qilish (Balansdan yechish)</span>
-</button>
-<!-- Telegram Channel Notification Notice -->
-<div class="p-space-sm rounded-lg bg-surface-container flex items-start gap-2.5">
-<span class="material-symbols-outlined text-secondary-fixed text-[18px] shrink-0 mt-0.5">campaign</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Buyurtma toʻgʻridan-toʻgʻri <a class="text-primary-fixed hover:underline font-mono" href="#">@Donuz_Buyurtmlar</a> kanaliga va Telegram botingizga yuboriladi.
-              </p>
-</div>
-</div>
-<!-- Order Status Toast / Alert Modal Simulator -->
-<div class="hidden mt-space-md p-space-md rounded-xl bg-surface-container-high shadow-2xl flex flex-col gap-space-sm animate-fade-in" id="order-success-modal">
-<div class="flex items-center gap-2 text-tertiary-fixed">
-<span class="material-symbols-outlined text-[24px]">task_alt</span>
-<span class="font-headline-sm text-body-lg font-bold">Buyurtma muvaffaqiyatli qabul qilindi!</span>
-</div>
-<div class="font-label-code text-body-sm text-on-surface-variant flex flex-col gap-1">
-<div>Buyurtma ID: <span class="text-primary-fixed">#ORD-94821</span></div>
-<div>Holat: <span class="text-tertiary-fixed">Avtomatik yuborilmoqda (Bay2Game)</span></div>
-<div>Telegram bot xabari: <span class="text-on-surface">Yuborildi ✅</span></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Live Recent Orders Ticker from Provider Bay2Game API -->
-<div class="bg-surface-container-low rounded-xl p-space-md md:p-space-lg mb-space-lg shadow-md">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-md">
-<div class="flex items-center gap-2">
-<span class="relative flex h-2.5 w-2.5">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-container opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary-fixed"></span>
-</span>
-<h3 class="font-headline-md text-headline-sm text-on-surface">Soʻnggi amalga oshirilgan toʻlovlar</h3>
-<span class="font-label-code text-body-sm text-outline">Bay2Game Gateway Live Stream</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant font-label-code text-body-sm">
-<span>Oʻrtacha tezlik:</span>
-<span class="text-primary-fixed font-bold">42 soniya</span>
-</div>
-</div>
-<!-- Ticker Row Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-sm">
-<!-- Live Item 1 -->
-<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between hover:bg-surface-container-high transition-colors">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary-fixed text-[18px]">sports_esports</span>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-sm text-on-surface font-semibold truncate">Rustam_Pro***</div>
-<div class="font-label-code text-body-sm text-outline truncate">PUBG 660 UC • 128,000 soʻm</div>
-</div>
-</div>
-<span class="font-label-caps text-label-caps bg-tertiary-container/20 text-tertiary-fixed px-1.5 py-0.5 rounded shrink-0">BAJARILDI</span>
-</div>
-<!-- Live Item 2 -->
-<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between hover:bg-surface-container-high transition-colors">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-secondary text-[18px]">diamond</span>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-sm text-on-surface font-semibold truncate">Alisher_Legend***</div>
-<div class="font-label-code text-body-sm text-outline truncate">MLBB 706 Dim • 145,000 soʻm</div>
-</div>
-</div>
-<span class="font-label-caps text-label-caps bg-tertiary-container/20 text-tertiary-fixed px-1.5 py-0.5 rounded shrink-0">BAJARILDI</span>
-</div>
-<!-- Live Item 3 -->
-<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between hover:bg-surface-container-high transition-colors">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-primary-container text-[18px]">bolt</span>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-sm text-on-surface font-semibold truncate">Sanjar_FF***</div>
-<div class="font-label-code text-body-sm text-outline truncate">Free Fire 1080 • 110,000 soʻm</div>
-</div>
-</div>
-<span class="font-label-caps text-label-caps bg-tertiary-container/20 text-tertiary-fixed px-1.5 py-0.5 rounded shrink-0">BAJARILDI</span>
-</div>
-<!-- Live Item 4 -->
-<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between hover:bg-surface-container-high transition-colors">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">military_tech</span>
-</div>
-<div class="min-w-0">
-<div class="font-headline-sm text-body-sm text-on-surface font-semibold truncate">Bekzod_Sniper***</div>
-<div class="font-label-code text-body-sm text-outline truncate">PUBG 1800 UC • 330,000 soʻm</div>
-</div>
-</div>
-<span class="font-label-caps text-label-caps bg-primary-container/20 text-primary-fixed-dim px-1.5 py-0.5 rounded shrink-0">YUKLANMOQDA</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Interactive JavaScript handling state, API queries, game tabs, and calculation -->
 <script>
-    // State management matching Python models
-    let userBalance = 154000;
-    let currentGame = 'PUBG Mobile';
-    let currentGameId = 141;
-    let selectedPackageName = '660 UC';
-    let packagePrice = 128000;
-    let promoDiscount = 0;
-    let isVerified = true;
-    let currentGamerHandle = 'ShadowNinja_UZ';
+  (function initDashboard() {
+    const toggleBtn = document.getElementById('toggleBalanceBtn');
+    const eyeIcon = document.getElementById('balanceEyeIcon');
+    const balanceDisplay = document.getElementById('balanceValueDisplay');
+    const cardBalances = document.querySelectorAll('[data-masked-value]');
+    const copyBtn = document.getElementById('copyIdBtn');
+    const copyLabel = document.getElementById('copyLabel');
 
-    // Game Switcher
-    function switchGame(key, gameId) {
-      currentGameId = gameId;
-      document.querySelectorAll('.game-tab-btn').forEach(btn => {
-        btn.classList.remove('bg-surface-container-high', 'text-primary-fixed', 'shadow-[0_0_15px_rgba(0,219,233,0.12)]');
-        btn.classList.add('bg-surface-container', 'text-on-surface-variant');
-      });
+    let isHidden = false;
+    const originalBalance = "145,000";
 
-      const activeBtn = document.getElementById('tab-game-' + key);
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
-        activeBtn.classList.add('bg-surface-container-high', 'text-primary-fixed', 'shadow-[0_0_15px_rgba(0,219,233,0.12)]');
-      }
+    if (toggleBtn && balanceDisplay) {
+      toggleBtn.addEventListener('click', () => {
+        isHidden = !isHidden;
+        
+        // Haptic feedback fallback for WebApp
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) {
+          window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+        }
 
-      const serverContainer = document.getElementById('server-id-container');
-      const playerContainer = document.getElementById('player-id-container');
-
-      if (key === 'mlbb') {
-        currentGame = 'Mobile Legends';
-        serverContainer.classList.remove('hidden');
-        serverContainer.classList.add('flex');
-        playerContainer.classList.remove('md:col-span-8');
-        playerContainer.classList.add('md:col-span-5');
-        document.getElementById('input-player-id').value = '19827401';
-        currentGamerHandle = 'MythicGlory_ML';
-        document.getElementById('disp-verified-id').innerText = '19827401 (6042)';
-      } else {
-        serverContainer.classList.add('hidden');
-        serverContainer.classList.remove('flex');
-        playerContainer.classList.remove('md:col-span-5');
-        playerContainer.classList.add('md:col-span-8');
-
-        if (key === 'pubg') {
-          currentGame = 'PUBG Mobile';
-          document.getElementById('input-player-id').value = '529381920';
-          currentGamerHandle = 'ShadowNinja_UZ';
-          document.getElementById('disp-verified-id').innerText = '529381920';
-        } else if (key === 'ff') {
-          currentGame = 'Free Fire';
-          document.getElementById('input-player-id').value = '882019482';
-          currentGamerHandle = 'BermudaFire_UZ';
-          document.getElementById('disp-verified-id').innerText = '882019482';
+        if (isHidden) {
+          balanceDisplay.textContent = "••••••••";
+          eyeIcon.textContent = "visibility_off";
+          cardBalances.forEach(el => {
+            el.dataset.raw = el.textContent;
+            el.textContent = "•••••••• UZS";
+          });
         } else {
-          currentGame = 'Genshin Impact';
-          document.getElementById('input-player-id').value = '701928412';
-          currentGamerHandle = 'TeyvatTraveler';
-          document.getElementById('disp-verified-id').innerText = '701928412';
-        }
-      }
-
-      document.getElementById('summary-game-name').innerText = currentGame;
-      document.getElementById('summary-player-name').innerText = currentGamerHandle;
-      recalculateDrawer();
-    }
-
-    // ID Validation Simulator (/api/check-id PlayPay Validator)
-    function triggerIdVerification() {
-      const btn = document.getElementById('btn-verify-id');
-      const text = document.getElementById('verify-btn-text');
-      const spinner = document.getElementById('verify-spinner');
-      const inputVal = document.getElementById('input-player-id').value.trim();
-
-      if (!inputVal) {
-        alert("Iltimos, ID raqamini kiriting!");
-        return;
-      }
-
-      text.innerText = 'Tekshirilmoqda...';
-      spinner.classList.add('animate-spin');
-
-      setTimeout(() => {
-        spinner.classList.remove('animate-spin');
-        text.innerText = '🔎 ID tekshirish';
-        isVerified = true;
-        document.getElementById('disp-verified-id').innerText = inputVal;
-        document.getElementById('summary-player-name').innerText = currentGamerHandle;
-        
-        const card = document.getElementById('verified-result-card');
-        card.classList.add('scale-[1.02]');
-        setTimeout(() => card.classList.remove('scale-[1.02]'), 200);
-      }, 700);
-    }
-
-    function clearPlayerId() {
-      const inp = document.getElementById('input-player-id');
-      inp.value = '';
-      inp.focus();
-    }
-
-    // Package Selection
-    function selectPackage(el, name, price, discountVal) {
-      document.querySelectorAll('.package-card').forEach(card => {
-        card.classList.remove('selected-package', 'bg-surface-container', 'shadow-[0_0_20px_rgba(0,240,255,0.2)]');
-        card.classList.add('bg-surface-container-low');
-        const icon = card.querySelector('.check-icon');
-        if (icon) {
-          icon.classList.remove('text-primary-fixed-dim', 'opacity-100');
-          icon.classList.add('text-outline', 'opacity-20');
-          icon.style.fontVariationSettings = "'FILL' 0";
+          balanceDisplay.textContent = originalBalance;
+          eyeIcon.textContent = "visibility";
+          cardBalances.forEach(el => {
+            el.textContent = el.dataset.maskedValue || el.dataset.raw;
+          });
         }
       });
-
-      el.classList.add('selected-package', 'bg-surface-container', 'shadow-[0_0_20px_rgba(0,240,255,0.2)]');
-      el.classList.remove('bg-surface-container-low');
-      const activeIcon = el.querySelector('.check-icon');
-      if (activeIcon) {
-        activeIcon.classList.add('text-primary-fixed-dim', 'opacity-100');
-        activeIcon.classList.remove('text-outline', 'opacity-20');
-        activeIcon.style.fontVariationSettings = "'FILL' 1";
-      }
-
-      selectedPackageName = name;
-      packagePrice = price;
-      recalculateDrawer();
     }
 
-    // Promo Code Handler
-    function applyPromoCode() {
-      const code = document.getElementById('input-promo').value.trim().toUpperCase();
-      const statusLabel = document.getElementById('promo-status');
-      const discountRow = document.getElementById('promo-discount-row');
-      const discountVal = document.getElementById('summary-discount');
-
-      if (code === 'DONUZ2025' || code === 'FASTPAY') {
-        promoDiscount = 10000;
-        statusLabel.innerText = '✅ 10,000 soʻm chegirildi';
-        statusLabel.className = 'font-label-code text-body-sm text-tertiary-fixed';
-        discountRow.classList.remove('hidden');
-        discountRow.classList.add('flex');
-        discountVal.innerText = '-10,000 soʻm';
-      } else if (code === '') {
-        promoDiscount = 0;
-        statusLabel.innerText = '';
-        discountRow.classList.add('hidden');
-      } else {
-        promoDiscount = 0;
-        statusLabel.innerText = '❌ Notoʻgʻri promo kod';
-        statusLabel.className = 'font-label-code text-body-sm text-error';
-        discountRow.classList.add('hidden');
-      }
-      recalculateDrawer();
-    }
-
-    // Checkout Calculation Drawer
-    function recalculateDrawer() {
-      document.getElementById('summary-package-name').innerText = selectedPackageName;
-      document.getElementById('summary-original-price').innerText = packagePrice.toLocaleString() + ' soʻm';
-      
-      const finalPrice = Math.max(0, packagePrice - promoDiscount);
-      document.getElementById('summary-total-price').innerText = finalPrice.toLocaleString() + ' soʻm';
-
-      const remaining = userBalance - finalPrice;
-      const remDisplay = document.getElementById('summary-remaining-balance');
-
-      if (remaining >= 0) {
-        remDisplay.innerText = remaining.toLocaleString() + ' soʻm';
-        remDisplay.className = 'font-label-code text-tertiary-fixed font-semibold';
-        document.getElementById('btn-submit-order').disabled = false;
-        document.getElementById('btn-submit-order').classList.remove('opacity-50', 'cursor-not-allowed');
-      } else {
-        remDisplay.innerText = 'Mablagʻ yetarli emas (' + remaining.toLocaleString() + ' soʻm)';
-        remDisplay.className = 'font-label-code text-error font-semibold';
-        document.getElementById('btn-submit-order').disabled = true;
-        document.getElementById('btn-submit-order').classList.add('opacity-50', 'cursor-not-allowed');
-      }
-    }
-
-    // Execute Order (/api/order trigger)
-    function executeOrder() {
-      const finalPrice = Math.max(0, packagePrice - promoDiscount);
-      if (userBalance < finalPrice) {
-        alert("Hisobingizda mablagʻ yetarli emas! Iltimos, Telegram orqali balansni toʻldiring.");
-        return;
-      }
-
-      const btn = document.getElementById('btn-submit-order');
-      btn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span><span>Xarid amalga oshirilmoqda...</span>';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        userBalance -= finalPrice;
-        document.getElementById('user-balance-display').innerText = userBalance.toLocaleString();
+    if (copyBtn && copyLabel) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard?.writeText("89412209").catch(() => {});
         
-        btn.innerHTML = '<span class="material-symbols-outlined text-[22px]">check</span><span>Muvaffaqiyatli toʻlandi</span>';
-        btn.classList.remove('bg-primary-container', 'text-on-primary-container');
-        btn.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback) {
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+        }
 
-        const successModal = document.getElementById('order-success-modal');
-        successModal.classList.remove('hidden');
-
-        recalculateDrawer();
+        const prevText = copyLabel.textContent;
+        copyLabel.textContent = "Nusxalandi!";
+        copyLabel.classList.add('text-primary');
 
         setTimeout(() => {
-          btn.innerHTML = '<span class="material-symbols-outlined text-[22px]">flash_on</span><span class="font-bold">Xarid qilish (Balansdan yechish)</span>';
-          btn.classList.add('bg-primary-container', 'text-on-primary-container');
-          btn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container');
-          btn.disabled = false;
-        }, 5000);
-      }, 1200);
+          copyLabel.textContent = prevText;
+          copyLabel.classList.remove('text-primary');
+        }, 1800);
+      });
     }
-  </script>
-</div></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="w-full px-gutter-desktop max-w-[1440px] mx-auto flex flex-col gap-space-lg"><div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-sm text-primary uppercase">DONUZ GAME DONAT</span><span class="font-label-code text-body-sm text-on-surface-variant px-space-xs py-0.5 bg-surface-container-high rounded">v2.4-fastpay</span></div><div class="flex flex-wrap items-center gap-space-sm font-label-code text-body-sm text-on-surface-variant"><span class="text-outline">Live Endpoints:</span><span class="bg-surface-container px-2 py-1 rounded text-primary-fixed-dim">/api/catalog</span><span class="bg-surface-container px-2 py-1 rounded text-primary-fixed-dim">/api/auth/verify</span><span class="bg-surface-container px-2 py-1 rounded text-primary-fixed-dim">/api/order</span><span class="bg-surface-container px-2 py-1 rounded text-primary-fixed-dim">/api/check-id</span></div></div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 DONUZ Game Donat. Tezkor avtomatlashtirilgan oʻyin toʻlovlari platformasi.</p><div class="flex items-center gap-space-md"><a class="flex items-center gap-1.5 font-label-code text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">send</span><span>@donuz_official</span></a><a class="flex items-center gap-1.5 font-label-code text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">support_agent</span><span>Donuz Support</span></a><a class="flex items-center gap-1.5 font-label-code text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">shield</span><span>Status Monitor</span></a></div></div></div></footer></body></html>
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-low/85 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.4)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-gutter max-w-lg mx-auto"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 transition-colors active:scale-95 text-primary font-bold" data-path="asosiy" href="#"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-badge text-label-badge">Asosiy</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant transition-colors active:scale-95" data-path="toldirish" href="#"><span class="material-symbols-outlined text-[24px]">add_card</span><span class="font-label-badge text-label-badge">To‘ldirish</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 text-on-surface-variant transition-colors active:scale-95" data-path="tarix" href="#"><span class="material-symbols-outlined text-[24px]">history</span><span class="font-label-badge text-label-badge">Tarix</span></a></div></nav></body></html>
