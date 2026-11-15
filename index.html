@@ -30,6 +30,11 @@ h1{font-size:2rem;line-height:1.15;margin:4px 0 8px;font-weight:800}
 .opt{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;text-align:left}
 .opt b{display:block}
 .opt small{color:var(--mute)}
+.pic{width:100%;aspect-ratio:1/1;border-radius:10px;overflow:hidden;margin-bottom:8px;display:grid;place-items:center;background:#1c1342}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic.pk{aspect-ratio:auto;height:64px;background:transparent}
+.pic.pk svg{height:56px;width:56px}
+.pic .ltr{font-weight:800;font-size:2.4rem;color:#fff}
 .opt.on{border-color:var(--pink);background:#3a2a78}
 label{display:block;font-weight:500;margin:10px 0 6px}
 input{width:100%;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font:inherit}
@@ -133,6 +138,54 @@ async function api(path, opts = {}) {
 }
 function say(el, text, type) { el.textContent = text || ""; el.className = "msg" + (type ? " " + type : ""); }
 
+// ---------- Rasmlar ----------
+// O'yin rasmlarini GitHub'dagi "img" papkasiga yuklang. Fayl nomi shu ro'yxatdagidek bo'lsin.
+const GAME_IMG = {
+  "pubg": "img/pubg.jpg",
+  "mobile legends": "img/mlbb.jpg",
+  "roblox": "img/roblox.jpg",
+  "free fire": "img/freefire.jpg",
+  "grand mobile": "img/grand.jpg",
+  "telegram": "img/telegram.jpg",
+  "standoff": "img/standoff.jpg",
+  "genshin": "img/genshin.jpg",
+  "brawl": "img/brawl.jpg",
+  "clash": "img/clash.jpg"
+};
+const TILE_COLORS = ["#ff5d8f", "#4cc9f0", "#8b6cff", "#ffb347", "#3ddc97", "#ff7a59"];
+function gameThumb(name) {
+  const n = name.toLowerCase();
+  let src = "";
+  for (const k in GAME_IMG) if (n.includes(k)) { src = GAME_IMG[k]; break; }
+  const tile = () => {
+    const d = document.createElement("div");
+    d.className = "ltr"; d.textContent = name.trim().charAt(0).toUpperCase();
+    d.style.cssText = "width:100%;height:100%;display:grid;place-items:center;background:" +
+      TILE_COLORS[(name.length + name.charCodeAt(0)) % TILE_COLORS.length];
+    return d;
+  };
+  if (!src) return tile();
+  const img = document.createElement("img");
+  img.alt = name; img.loading = "lazy"; img.src = src;
+  img.onerror = () => img.replaceWith(tile());
+  return img;
+}
+function pkgIcon(text) {
+  const t = text.toLowerCase();
+  const coin = (c1, c2, label) => '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="' + c1 + '"/><circle cx="32" cy="32" r="22" fill="none" stroke="' + c2 + '" stroke-width="3"/><text x="32" y="39" text-anchor="middle" font-size="20" font-weight="800" fill="' + c2 + '" font-family="Rubik,sans-serif">' + label + '</text></svg>';
+  if (/diamond|almaz|алмаз|💎|\bdia\b/.test(t))
+    return '<svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,6 54,24 32,58 10,24" fill="#4cc9f0"/><polygon points="32,6 44,24 32,58 20,24" fill="#8fe3ff"/><polygon points="10,24 54,24 32,18" fill="#2aa5d1" opacity=".55"/></svg>';
+  if (/robux|rbx/.test(t))
+    return '<svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,5 56,18 56,46 32,59 8,46 8,18" fill="#ffb347"/><rect x="22" y="22" width="20" height="20" rx="3" fill="#fff"/></svg>';
+  if (/star|stars|yulduz/.test(t))
+    return '<svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,5 40,24 60,25 44,38 50,58 32,46 14,58 20,38 4,25 24,24" fill="#ffd23f"/></svg>';
+  if (/premium/.test(t))
+    return '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#8b6cff"/><polygon points="32,14 38,27 52,29 42,39 44,53 32,46 20,53 22,39 12,29 26,27" fill="#fff"/></svg>';
+  if (/\buc\b|\d+\s*uc|pubg/.test(t)) return coin("#ffb347", "#6b3d00", "UC");
+  if (/\bgc\b|grand/.test(t)) return coin("#3ddc97", "#0b4a30", "GC");
+  return coin("#ff5d8f", "#fff", "$");
+}
+
 // ---------- Katalog ----------
 async function loadCatalog() {
   const { data } = await api("/api/catalog");
@@ -141,9 +194,10 @@ async function loadCatalog() {
   $("games").innerHTML = "";
   games.forEach(g => {
     const b = document.createElement("button");
-    b.type = "button"; b.className = "opt"; b.innerHTML = "<b></b><small></small>";
-    b.firstChild.textContent = g.name;
-    b.lastChild.textContent = g.packages.length + " ta paket";
+    b.type = "button"; b.className = "opt"; b.innerHTML = '<div class="pic"></div><b></b><small></small>';
+    b.querySelector(".pic").appendChild(gameThumb(g.name));
+    b.querySelector("b").textContent = g.name;
+    b.querySelector("small").textContent = g.packages.length + " ta paket";
     b.onclick = () => pickGame(g, b);
     $("games").appendChild(b);
   });
@@ -155,9 +209,10 @@ function pickGame(g, btn) {
   $("pkgs").innerHTML = "";
   g.packages.forEach(p => {
     const b = document.createElement("button");
-    b.type = "button"; b.className = "opt"; b.innerHTML = "<b></b><small></small>";
-    b.firstChild.textContent = p.name;
-    b.lastChild.textContent = fmt(p.price);
+    b.type = "button"; b.className = "opt"; b.innerHTML = '<div class="pic pk"></div><b></b><small></small>';
+    b.querySelector(".pic").innerHTML = pkgIcon(p.name + " " + g.name);
+    b.querySelector("b").textContent = p.name;
+    b.querySelector("small").textContent = fmt(p.price);
     b.onclick = () => pickPkg(p, b);
     $("pkgs").appendChild(b);
   });
