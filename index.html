@@ -35,6 +35,9 @@ h1{font-size:2rem;line-height:1.15;margin:4px 0 8px;font-weight:800}
 .pic.pk{aspect-ratio:auto;height:64px;background:transparent}
 .pic.pk svg{height:56px;width:56px}
 .pic .ltr{font-weight:800;font-size:2.4rem;color:#fff}
+.tabs{display:flex;gap:8px;margin:0 0 12px}
+.tab{flex:1;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:11px;font-weight:700}
+.tab.on{background:var(--pink);border-color:var(--pink);color:#fff}
 .opt.on{border-color:var(--pink);background:#3a2a78}
 label{display:block;font-weight:500;margin:10px 0 6px}
 input{width:100%;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px;color:var(--text);font:inherit}
@@ -71,6 +74,7 @@ dialog h3{margin:0 0 6px}
 
   <section class="step hide" id="s2">
     <h2>2. Paketni tanlang</h2>
+    <div class="tabs hide" id="tabs"></div>
     <div class="grid" id="pkgs"></div>
   </section>
 
@@ -157,18 +161,48 @@ function gameThumb(name) {
   const n = name.toLowerCase();
   let src = "";
   for (const k in GAME_IMG) if (n.includes(k)) { src = GAME_IMG[k]; break; }
-  const tile = () => {
-    const d = document.createElement("div");
-    d.className = "ltr"; d.textContent = name.trim().charAt(0).toUpperCase();
-    d.style.cssText = "width:100%;height:100%;display:grid;place-items:center;background:" +
-      TILE_COLORS[(name.length + name.charCodeAt(0)) % TILE_COLORS.length];
-    return d;
-  };
+  const tile = () => gameArt(name);
   if (!src) return tile();
   const img = document.createElement("img");
   img.alt = name; img.loading = "lazy"; img.src = src;
   img.onerror = () => img.replaceWith(tile());
   return img;
+}
+
+function gameArt(name) {
+  const n = name.toLowerCase();
+  const W = 'fill="#fff"';
+  const S = 'fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"';
+  let c1 = "#8b6cff", c2 = "#4cc9f0", g = "";
+  if (n.includes("mobile legends") || n.includes("mlbb")) {
+    c1 = "#2b3fd6"; c2 = "#8b3dff";
+    g = '<path d="M50 12 L82 24 V50 C82 70 66 84 50 90 C34 84 18 70 18 50 V24 Z" fill="#ffd23f"/><path d="M50 22 L74 31 V50 C74 64 62 75 50 80 C38 75 26 64 26 50 V31 Z" fill="#2b3fd6"/><path d="M50 30 V68 M40 56 H60" stroke="#fff" stroke-width="6" stroke-linecap="round"/>';
+  } else if (n.includes("pubg")) {
+    c1 = "#f29f05"; c2 = "#5a3a00";
+    g = '<circle cx="50" cy="50" r="26" ' + S + '/><circle cx="50" cy="50" r="4" ' + W + '/><path d="M50 12 V30 M50 70 V88 M12 50 H30 M70 50 H88" ' + S + '/>';
+  } else if (n.includes("roblox")) {
+    c1 = "#e2231a"; c2 = "#5b0d0a";
+    g = '<g transform="rotate(15 50 50)"><rect x="22" y="22" width="56" height="56" rx="8" ' + W + '/><rect x="42" y="42" width="16" height="16" rx="2" fill="' + c1 + '"/></g>';
+  } else if (n.includes("garena") || n.includes("free fire")) {
+    c1 = "#ff8a00"; c2 = "#d4231a";
+    g = '<path d="M50 10 C58 30 78 38 74 60 C72 78 60 88 50 88 C38 88 26 78 26 62 C26 50 36 46 40 34 C44 42 48 40 50 10 Z" ' + W + '/><path d="M50 50 C56 60 62 64 60 72 C58 78 54 80 50 80 C44 80 40 76 40 70 C40 62 48 58 50 50 Z" fill="#ff8a00"/>';
+  } else if (n.includes("call of duty") || n.includes("cod")) {
+    c1 = "#3b4a3a"; c2 = "#12170f";
+    g = '<path d="M22 34 L50 52 L78 34 M22 54 L50 72 L78 54" ' + S + '/><circle cx="50" cy="24" r="6" ' + W + '/>';
+  } else if (n.includes("telegram")) {
+    c1 = "#2aa3e5"; c2 = "#1b6fb5";
+    g = '<path d="M14 46 L86 16 L72 84 L50 64 L38 80 L36 60 Z" ' + W + '/>';
+  } else if (n.includes("grand")) {
+    c1 = "#1faa72"; c2 = "#0c4a33";
+    g = '<path d="M16 62 L24 44 H66 L80 56 H88 V70 H16 Z" ' + W + '/><circle cx="34" cy="72" r="9" fill="#0c4a33" stroke="#fff" stroke-width="4"/><circle cx="72" cy="72" r="9" fill="#0c4a33" stroke="#fff" stroke-width="4"/>';
+  } else {
+    g = '<text x="50" y="66" text-anchor="middle" font-size="52" font-weight="800" fill="#fff" font-family="Rubik,sans-serif">' + name.trim().charAt(0).toUpperCase() + '</text>';
+  }
+  const id = "g" + Math.abs([...n].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) | 0, 7));
+  const d = document.createElement("div");
+  d.style.cssText = "width:100%;height:100%";
+  d.innerHTML = '<svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient></defs><rect width="100" height="100" fill="url(#' + id + ')"/>' + g + '</svg>';
+  return d;
 }
 function pkgIcon(text) {
   const t = text.toLowerCase();
@@ -202,26 +236,48 @@ async function loadCatalog() {
     $("games").appendChild(b);
   });
 }
+const isGift = p => /gift|card|karta|подар/i.test(p.name);
+let cat = "main";
 function pickGame(g, btn) {
-  game = g; pkg = null;
+  game = g; pkg = null; cat = "main";
   document.querySelectorAll("#games .opt").forEach(x => x.classList.remove("on"));
   btn.classList.add("on");
-  $("pkgs").innerHTML = "";
-  g.packages.forEach(p => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "opt"; b.innerHTML = '<div class="pic pk"></div><b></b><small></small>';
-    b.querySelector(".pic").innerHTML = pkgIcon(p.name + " " + g.name);
-    b.querySelector("b").textContent = p.name;
-    b.querySelector("small").textContent = fmt(p.price);
-    b.onclick = () => pickPkg(p, b);
-    $("pkgs").appendChild(b);
-  });
+  renderTabs(); renderPkgs();
   $("pidLabel").textContent = g.id_label || "O'yinchi ID";
   $("srvBox").classList.toggle("hide", !g.requires_server);
   $("s2").classList.remove("hide"); $("s3").classList.remove("hide");
   say($("chkMsg"), ""); say($("orderMsg"), "");
   updateBar();
   $("s2").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function renderTabs() {
+  const gifts = game.packages.filter(isGift).length;
+  const main = game.packages.length - gifts;
+  const box = $("tabs"); box.innerHTML = "";
+  box.classList.toggle("hide", !(gifts && main));
+  if (!(gifts && main)) { cat = gifts ? "gift" : "main"; return; }
+  const mainName = /roblox/i.test(game.name) ? "Robux" : "Paketlar";
+  [["main", mainName], ["gift", "Gift Card"]].forEach(([k, label]) => {
+    const t = document.createElement("button");
+    t.type = "button"; t.className = "tab" + (cat === k ? " on" : ""); t.textContent = label;
+    t.onclick = () => { cat = k; pkg = null; renderTabs(); renderPkgs(); updateBar(); };
+    box.appendChild(t);
+  });
+}
+function renderPkgs() {
+  $("pkgs").innerHTML = "";
+  game.packages.filter(p => (cat === "gift") === isGift(p)).forEach(p => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "opt"; b.innerHTML = '<div class="pic pk"></div><b></b><small></small>';
+    b.querySelector(".pic").innerHTML = isGift(p) ? giftIcon() : pkgIcon(p.name + " " + game.name);
+    b.querySelector("b").textContent = p.name;
+    b.querySelector("small").textContent = fmt(p.price);
+    b.onclick = () => pickPkg(p, b);
+    $("pkgs").appendChild(b);
+  });
+}
+function giftIcon() {
+  return '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="26" width="48" height="30" rx="4" fill="#ff5d8f"/><rect x="6" y="18" width="52" height="12" rx="3" fill="#ff86ad"/><rect x="29" y="18" width="6" height="38" fill="#ffd23f"/><path d="M32 18 C24 6 12 10 18 18 Z M32 18 C40 6 52 10 46 18 Z" fill="#ffd23f"/></svg>';
 }
 function pickPkg(p, btn) {
   pkg = p;
